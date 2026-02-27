@@ -314,4 +314,22 @@
   .delay-300 { transition-delay: 300ms; }
   .delay-400 { transition-delay: 400ms; }
   .delay-500 { transition-delay: 500ms; }
+
+  /* Watermark Logo */
+  .nv-watermark {
+    position: absolute;
+    opacity: 0.04;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .nv-watermark-lg {
+    width: 280px;
+    height: 280px;
+  }
+
+  .nv-watermark-md {
+    width: 200px;
+    height: 200px;
+  }
 }

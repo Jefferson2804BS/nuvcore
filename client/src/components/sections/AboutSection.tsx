@@ -5,6 +5,7 @@
  */
 
 const ABOUT_VISUAL = "https://private-us-east-1.manuscdn.com/sessionFile/3ZwnxAvCGCsvjvmdSPvTyk/sandbox/qRCAK89su30SRUWxSWtIm7-img-2_1772158105000_na1fn_bnV2Y29yZS1hYm91dC12aXN1YWw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvM1p3bnhBdkNHQ3N2anZtZFNQdlR5ay9zYW5kYm94L3FSQ0FLODlzdTMwU1JVV3hTV3RJbTctaW1nLTJfMTc3MjE1ODEwNTAwMF9uYTFmbl9iblYyWTI5eVpTMWhZbTkxZEMxMmFYTjFZV3cucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=MyQmhxmFN7Ph~ntmtya45eq2lBQ2W5R~aqL7bBplLyDuLIeLCnnM3R52ZOs~SjArW3IX2IxMi-ZzRpK1p7xvMH-Mv5jTbi5YoUrDHY1Xc5I5qUj21Kq0XVbrd4CjlIENeuKJTp1TfxSO-yAzrX-c6HcI-JBEEFneEnXV-pCsdBAzyqTcu-I6SeJzW34ceD~eD7bAj0ZAxxldShMfFXqwN9nC6nOcv7eUtTgjCuHDhd8q54OiaBCBHdx-6gOyjuhsrNZCeBVNJDOzNy~tI1QIN-kl75KqnwIJcqEnpm0E79hahXilj4A-JQyBDa4xECcelHGEW4zfKgMHjyE1ekj7qA__";
+const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663387028892/RLWfTMXfVFnGSRxy.png";
 
 const values = [
   {
@@ -29,10 +30,17 @@ export default function AboutSection() {
   return (
     <section
       id="sobre"
-      className="nv-section"
+      className="nv-section relative"
       style={{ backgroundColor: "#0F0F12" }}
     >
-      <div className="container">
+      {/* Watermark Logo */}
+      <img
+        src={LOGO_URL}
+        alt=""
+        className="nv-watermark nv-watermark-lg"
+        style={{ top: "20%", left: "-10%" }}
+      />
+      <div className="container relative z-10">
         {/* Section header */}
         <div className="flex items-center gap-3 mb-16 fade-up">
           <span className="nv-divider" />

@@ -1,9 +1,12 @@
 /*
  * NUVCORE — Footer Component
  * Design: "Precision Dark" — minimal, structured, social links
+ * Logo: Official NUVCORE logo
  */
 
 import { Mail, Instagram } from "lucide-react";
+
+const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663387028892/RLWfTMXfVFnGSRxy.png";
 
 const navLinks = [
   { label: "Sobre", href: "#sobre" },
@@ -28,12 +31,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div
-                className="w-8 h-8 rounded flex items-center justify-center text-white font-bold text-sm"
-                style={{ backgroundColor: "#C41B2C", fontFamily: "'Space Grotesk', sans-serif" }}
-              >
-                N
-              </div>
+              <img
+                src={LOGO_URL}
+                alt="NUVCORE Logo"
+                className="w-8 h-8 object-contain"
+              />
               <span
                 className="text-white font-bold text-lg tracking-tight"
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}

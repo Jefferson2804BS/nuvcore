@@ -1,11 +1,13 @@
 /*
  * NUVCORE — Navbar Component
  * Design: "Precision Dark" — sticky, transparent → solid on scroll
- * Colors: Tech Black bg | Soft White text | Red accent
+ * Logo: Official NUVCORE logo
  */
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+
+const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663387028892/RLWfTMXfVFnGSRxy.png";
 
 const navLinks = [
   { label: "Sobre", href: "#sobre" },
@@ -52,12 +54,11 @@ export default function Navbar() {
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
             className="flex items-center gap-2 group"
           >
-            <div
-              className="w-8 h-8 rounded flex items-center justify-center text-white font-bold text-sm"
-              style={{ backgroundColor: "#C41B2C", fontFamily: "'Space Grotesk', sans-serif" }}
-            >
-              N
-            </div>
+            <img
+              src={LOGO_URL}
+              alt="NUVCORE Logo"
+              className="w-8 h-8 object-contain"
+            />
             <span
               className="text-white font-bold text-lg tracking-tight"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}

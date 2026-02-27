@@ -7,6 +7,7 @@
 import { ArrowRight, ChevronDown } from "lucide-react";
 
 const HERO_BG = "https://private-us-east-1.manuscdn.com/sessionFile/3ZwnxAvCGCsvjvmdSPvTyk/sandbox/qRCAK89su30SRUWxSWtIm7-img-1_1772158112000_na1fn_bnV2Y29yZS1oZXJvLWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvM1p3bnhBdkNHQ3N2anZtZFNQdlR5ay9zYW5kYm94L3FSQ0FLODlzdTMwU1JVV3hTV3RJbTctaW1nLTFfMTc3MjE1ODExMjAwMF9uYTFmbl9iblYyWTI5eVpTMW9aWEp2TFdKbi5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=NMupaura2BXffR-xOSmhzso93KY9t~XKVf7bntd5ghTuL~MML-ajzO0DSAD4gFuNJ5XMWYhvLBkzRlVwrOkjeDdyJ8ywt8GIZ67eszZuyHL1Qb~SHPYeGFhQBA2OlpHgxrX2JbDj3t~wa3vspZiJIvqBPRq6PDUyHhu0Ty6tWuGWP-IArJQ8a5qLUwAVa6uF7T0EaHuFTKtBdkzbgigCrfhZfAr9IYNmjv3UE7ZIjVwK-wPRUIVgwX7s1SAmhPkKXenlud927~pNb26b02MBSJ1fcQMATrwKwKfKn2vVgn1uL-KL59U~9Nr41sreScfcEQksN7CdzolFssLxm3Amxg__";
+const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663387028892/RLWfTMXfVFnGSRxy.png";
 
 export default function HeroSection() {
   const scrollToContact = () => {
@@ -23,6 +24,14 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ backgroundColor: "#0F0F12" }}
     >
+      {/* Watermark Logo */}
+      <img
+        src={LOGO_URL}
+        alt=""
+        className="nv-watermark nv-watermark-lg"
+        style={{ bottom: "10%", right: "-5%" }}
+      />
+
       {/* Background Image */}
       <div
         className="absolute inset-0 z-0"
