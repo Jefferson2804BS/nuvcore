@@ -5,6 +5,7 @@
  */
 
 import { useEffect } from "react";
+import { useAuth } from "@/_core/hooks/useAuth";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
@@ -17,6 +18,10 @@ import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
+  // The userAuth hooks provides authentication state
+  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
+  const { user, loading, error, isAuthenticated, logout } = useAuth();
+
   useEffect(() => {
     const timer = setTimeout(() => {
       const elements = document.querySelectorAll(".fade-up, .fade-left, .fade-right, .scale-in");

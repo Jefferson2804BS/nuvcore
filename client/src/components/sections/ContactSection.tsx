@@ -2,32 +2,59 @@
  * NUVCORE — Contact Section
  * Design: "Precision Dark" — two-column: info + form
  * Contact: nuvcore.agency@gmail.com | @nuvcore
+ * Backend: tRPC integration for form submission
  */
 
 import { useState } from "react";
-import { Mail, Instagram, Send, CheckCircle } from "lucide-react";
+import { Mail, Instagram, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { trpc } from "@/lib/trpc";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    business: "",
+    phone: "",
+    company: "",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const submitDiagnostic = trpc.contact.submitDiagnostic.useMutation({
+    onSuccess: () => {
+      setSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", company: "", message: "" });
+      setError(null);
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitted(false), 5000);
+    },
+    onError: (err) => {
+      setError(err.message || "Erro ao enviar formulário. Tente novamente.");
+    },
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setError(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    // Simulate form submission
-    await new Promise((res) => setTimeout(res, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    setError(null);
+
+    // Validação básica
+    if (!formData.name || !formData.email || !formData.message) {
+      setError("Preencha todos os campos obrigatórios");
+      return;
+    }
+
+    submitDiagnostic.mutate({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone || undefined,
+      company: formData.company || undefined,
+      message: formData.message,
+    });
   };
 
   return (
@@ -48,232 +75,255 @@ export default function ContactSection() {
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             Vamos construir algo{" "}
-            <span style={{ color: "#C41B2C" }}>juntos</span>
+            <span style={{ color: "#C41B2C" }}>extraordinário</span> juntos.
           </h2>
           <p
-            className="text-base fade-up delay-200"
-            style={{ color: "rgba(242,242,242,0.6)", fontFamily: "'Inter', sans-serif", maxWidth: "520px" }}
+            className="text-lg fade-up delay-200"
+            style={{ color: "rgba(242,242,242,0.55)", fontFamily: "'Inter', sans-serif", maxWidth: "600px" }}
           >
-            Preencha o formulário ou entre em contato diretamente. Respondo em até 24 horas.
+            Tenho interesse em projetos que desafiam o status quo. Se você quer crescer com estratégia e precisão, vamos conversar.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+        {/* Two-column layout */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left: Info */}
-          <div className="lg:col-span-2 space-y-8 fade-left">
-            {/* Contact info */}
-            <div className="space-y-5">
-              <a
-                href="mailto:nuvcore.agency@gmail.com"
-                className="flex items-start gap-4 group"
-              >
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 transition-colors"
-                  style={{ backgroundColor: "rgba(196,27,44,0.12)", border: "1px solid rgba(196,27,44,0.25)" }}
-                >
-                  <Mail size={18} style={{ color: "#C41B2C" }} />
-                </div>
-                <div>
-                  <div
-                    className="text-xs font-semibold mb-1"
-                    style={{ color: "rgba(242,242,242,0.4)", fontFamily: "'Inter', sans-serif", letterSpacing: "0.08em", textTransform: "uppercase" }}
+          <div className="fade-up delay-300">
+            <div className="space-y-8">
+              {/* Email */}
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <Mail size={20} style={{ color: "#C41B2C" }} />
+                  <span
+                    className="text-sm font-semibold"
+                    style={{ color: "rgba(242,242,242,0.4)", fontFamily: "'Inter', sans-serif", letterSpacing: "0.05em", textTransform: "uppercase" }}
                   >
                     E-mail
-                  </div>
-                  <div
-                    className="text-sm font-medium transition-colors"
-                    style={{ color: "#F2F2F2", fontFamily: "'Inter', sans-serif" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#C41B2C")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "#F2F2F2")}
-                  >
-                    nuvcore.agency@gmail.com
-                  </div>
+                  </span>
                 </div>
-              </a>
-
-              <a
-                href="https://instagram.com/nuvcore"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-4 group"
-              >
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                  style={{ backgroundColor: "rgba(37,99,235,0.12)", border: "1px solid rgba(37,99,235,0.25)" }}
+                <a
+                  href="mailto:nuvcore.agency@gmail.com"
+                  className="text-lg font-medium transition-colors duration-200"
+                  style={{ color: "#F2F2F2", fontFamily: "'Inter', sans-serif", textDecoration: "none" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#C41B2C")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "#F2F2F2")}
                 >
-                  <Instagram size={18} style={{ color: "#2563EB" }} />
-                </div>
-                <div>
-                  <div
-                    className="text-xs font-semibold mb-1"
-                    style={{ color: "rgba(242,242,242,0.4)", fontFamily: "'Inter', sans-serif", letterSpacing: "0.08em", textTransform: "uppercase" }}
+                  nuvcore.agency@gmail.com
+                </a>
+              </div>
+
+              {/* Instagram */}
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <Instagram size={20} style={{ color: "#C41B2C" }} />
+                  <span
+                    className="text-sm font-semibold"
+                    style={{ color: "rgba(242,242,242,0.4)", fontFamily: "'Inter', sans-serif", letterSpacing: "0.05em", textTransform: "uppercase" }}
                   >
                     Instagram
-                  </div>
-                  <div
-                    className="text-sm font-medium transition-colors"
-                    style={{ color: "#F2F2F2", fontFamily: "'Inter', sans-serif" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#2563EB")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "#F2F2F2")}
-                  >
-                    @nuvcore
-                  </div>
+                  </span>
                 </div>
-              </a>
-            </div>
+                <a
+                  href="https://instagram.com/nuvcore"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg font-medium transition-colors duration-200"
+                  style={{ color: "#F2F2F2", fontFamily: "'Inter', sans-serif", textDecoration: "none" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#C41B2C")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "#F2F2F2")}
+                >
+                  @nuvcore
+                </a>
+              </div>
 
-            {/* What to expect */}
-            <div
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "#0F0F12", border: "1px solid rgba(255,255,255,0.07)" }}
-            >
-              <h4
-                className="text-sm font-bold text-white mb-4"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+              {/* Response time */}
+              <div
+                className="p-4 rounded-lg"
+                style={{ backgroundColor: "rgba(196, 27, 44, 0.08)", borderLeft: "3px solid #C41B2C" }}
               >
-                O que acontece depois?
-              </h4>
-              <ol className="space-y-3">
-                {[
-                  "Respondo em até 24 horas",
-                  "Agendamos uma conversa de 30 min",
-                  "Apresento um diagnóstico gratuito",
-                  "Você decide se quer avançar",
-                ].map((step, i) => (
-                  <li
-                    key={step}
-                    className="flex items-start gap-3 text-sm"
-                    style={{ color: "rgba(242,242,242,0.6)", fontFamily: "'Inter', sans-serif" }}
-                  >
-                    <span
-                      className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5"
-                      style={{ backgroundColor: "rgba(196,27,44,0.15)", color: "#C41B2C", fontFamily: "'Space Grotesk', sans-serif" }}
-                    >
-                      {i + 1}
-                    </span>
-                    {step}
-                  </li>
-                ))}
-              </ol>
+                <p
+                  className="text-sm"
+                  style={{ color: "rgba(242,242,242,0.7)", fontFamily: "'Inter', sans-serif" }}
+                >
+                  Respondo todas as mensagens em até 24 horas. Se for urgente, me chama no Instagram.
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Right: Form */}
-          <div className="lg:col-span-3 fade-right">
+          <div className="fade-up delay-400">
             {submitted ? (
               <div
-                className="flex flex-col items-center justify-center text-center p-12 rounded-2xl h-full"
-                style={{ backgroundColor: "#0F0F12", border: "1px solid rgba(196,27,44,0.2)" }}
+                className="flex flex-col items-center justify-center p-8 rounded-lg text-center"
+                style={{ backgroundColor: "rgba(196, 27, 44, 0.1)", border: "1px solid rgba(196, 27, 44, 0.3)" }}
               >
-                <CheckCircle size={48} style={{ color: "#4ade80" }} className="mb-4" />
-                <h3
-                  className="text-2xl font-bold text-white mb-3"
-                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                >
-                  Mensagem enviada!
+                <CheckCircle size={48} style={{ color: "#C41B2C", marginBottom: "16px" }} />
+                <h3 className="text-xl font-bold text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  Obrigado!
                 </h3>
-                <p
-                  className="text-sm"
-                  style={{ color: "rgba(242,242,242,0.6)", fontFamily: "'Inter', sans-serif" }}
-                >
-                  Obrigado pelo contato. Responderei em até 24 horas.
+                <p style={{ color: "rgba(242,242,242,0.6)", fontFamily: "'Inter', sans-serif" }}>
+                  Sua solicitação foi enviada com sucesso. Entraremos em contato em breve.
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label
-                      className="block text-xs font-semibold mb-2"
-                      style={{ color: "rgba(242,242,242,0.5)", fontFamily: "'Inter', sans-serif", letterSpacing: "0.06em", textTransform: "uppercase" }}
-                    >
-                      Nome
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Seu nome completo"
-                      className="nv-input"
-                    />
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {error && (
+                  <div
+                    className="flex items-center gap-3 p-3 rounded-lg"
+                    style={{ backgroundColor: "rgba(196, 27, 44, 0.15)", border: "1px solid rgba(196, 27, 44, 0.4)" }}
+                  >
+                    <AlertCircle size={18} style={{ color: "#C41B2C", flexShrink: 0 }} />
+                    <p style={{ color: "#F2F2F2", fontFamily: "'Inter', sans-serif", fontSize: "14px" }}>
+                      {error}
+                    </p>
                   </div>
-                  <div>
-                    <label
-                      className="block text-xs font-semibold mb-2"
-                      style={{ color: "rgba(242,242,242,0.5)", fontFamily: "'Inter', sans-serif", letterSpacing: "0.06em", textTransform: "uppercase" }}
-                    >
-                      E-mail
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="seu@email.com"
-                      className="nv-input"
-                    />
-                  </div>
-                </div>
+                )}
 
+                {/* Name */}
                 <div>
                   <label
-                    className="block text-xs font-semibold mb-2"
-                    style={{ color: "rgba(242,242,242,0.5)", fontFamily: "'Inter', sans-serif", letterSpacing: "0.06em", textTransform: "uppercase" }}
+                    className="block text-sm font-medium mb-2"
+                    style={{ color: "rgba(242,242,242,0.7)", fontFamily: "'Inter', sans-serif" }}
                   >
-                    Tipo de Projeto
+                    Nome *
                   </label>
-                  <select
-                    name="business"
-                    value={formData.business}
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
-                    required
-                    className="nv-input"
-                    style={{ cursor: "pointer" }}
-                  >
-                    <option value="" disabled>Selecione o tipo de projeto</option>
-                    <option value="site-institucional">Site Institucional</option>
-                    <option value="landing-page">Landing Page</option>
-                    <option value="otimizacao">Otimização de Site Existente</option>
-                    <option value="planejamento">Planejamento de Estrutura Digital</option>
-                    <option value="outro">Outro</option>
-                  </select>
+                    placeholder="Seu nome"
+                    className="w-full px-4 py-2 rounded-lg border transition-colors duration-200"
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.05)",
+                      borderColor: "rgba(255,255,255,0.1)",
+                      color: "#F2F2F2",
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "#C41B2C")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
+                  />
                 </div>
 
+                {/* Email */}
                 <div>
                   <label
-                    className="block text-xs font-semibold mb-2"
-                    style={{ color: "rgba(242,242,242,0.5)", fontFamily: "'Inter', sans-serif", letterSpacing: "0.06em", textTransform: "uppercase" }}
+                    className="block text-sm font-medium mb-2"
+                    style={{ color: "rgba(242,242,242,0.7)", fontFamily: "'Inter', sans-serif" }}
                   >
-                    Mensagem
+                    E-mail *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="seu@email.com"
+                    className="w-full px-4 py-2 rounded-lg border transition-colors duration-200"
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.05)",
+                      borderColor: "rgba(255,255,255,0.1)",
+                      color: "#F2F2F2",
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "#C41B2C")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
+                  />
+                </div>
+
+                {/* Phone */}
+                <div>
+                  <label
+                    className="block text-sm font-medium mb-2"
+                    style={{ color: "rgba(242,242,242,0.7)", fontFamily: "'Inter', sans-serif" }}
+                  >
+                    Telefone
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="(11) 99999-9999"
+                    className="w-full px-4 py-2 rounded-lg border transition-colors duration-200"
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.05)",
+                      borderColor: "rgba(255,255,255,0.1)",
+                      color: "#F2F2F2",
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "#C41B2C")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
+                  />
+                </div>
+
+                {/* Company */}
+                <div>
+                  <label
+                    className="block text-sm font-medium mb-2"
+                    style={{ color: "rgba(242,242,242,0.7)", fontFamily: "'Inter', sans-serif" }}
+                  >
+                    Empresa
+                  </label>
+                  <input
+                    type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    placeholder="Nome da sua empresa"
+                    className="w-full px-4 py-2 rounded-lg border transition-colors duration-200"
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.05)",
+                      borderColor: "rgba(255,255,255,0.1)",
+                      color: "#F2F2F2",
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "#C41B2C")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
+                  />
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label
+                    className="block text-sm font-medium mb-2"
+                    style={{ color: "rgba(242,242,242,0.7)", fontFamily: "'Inter', sans-serif" }}
+                  >
+                    Mensagem *
                   </label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    required
+                    placeholder="Conte-me sobre seu projeto..."
                     rows={5}
-                    placeholder="Conte sobre seu negócio e o que você precisa..."
-                    className="nv-input resize-none"
+                    className="w-full px-4 py-2 rounded-lg border transition-colors duration-200 resize-none"
+                    style={{
+                      backgroundColor: "rgba(255,255,255,0.05)",
+                      borderColor: "rgba(255,255,255,0.1)",
+                      color: "#F2F2F2",
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                    onFocus={(e) => (e.currentTarget.style.borderColor = "#C41B2C")}
+                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
                   />
                 </div>
 
+                {/* Submit Button */}
                 <button
                   type="submit"
-                  disabled={loading}
-                  className="nv-btn-primary w-full justify-center text-base py-4"
-                  style={{ opacity: loading ? 0.7 : 1 }}
+                  disabled={submitDiagnostic.isPending}
+                  className="w-full nv-btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {loading ? (
+                  {submitDiagnostic.isPending ? (
                     <>
-                      <span className="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full" />
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                       Enviando...
                     </>
                   ) : (
                     <>
-                      Enviar Mensagem
+                      Enviar Solicitação
                       <Send size={16} />
                     </>
                   )}
