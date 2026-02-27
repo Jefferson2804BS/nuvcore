@@ -31,11 +31,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img
-                src={LOGO_URL}
-                alt="NUVCORE Logo"
-                className="w-8 h-8 object-contain"
-              />
+            <img
+              src={LOGO_URL}
+              alt="NUVCORE Logo"
+              className="w-10 h-10 object-contain"
+            />
               <span
                 className="text-white font-bold text-lg tracking-tight"
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}

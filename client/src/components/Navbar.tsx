@@ -57,7 +57,7 @@ export default function Navbar() {
             <img
               src={LOGO_URL}
               alt="NUVCORE Logo"
-              className="w-8 h-8 object-contain"
+              className="w-10 h-10 object-contain"
             />
             <span
               className="text-white font-bold text-lg tracking-tight"
