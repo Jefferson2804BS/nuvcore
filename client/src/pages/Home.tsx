@@ -1,25 +1,58 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
-
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
+/*
+ * NUVCORE — Home Page
+ * Design: "Precision Dark" — Dark SaaS Modernism
+ * All sections: Hero, About, Services, Process, Portfolio, Why, CTA, Contact
  */
+
+import { useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/sections/HeroSection";
+import AboutSection from "@/components/sections/AboutSection";
+import ServicesSection from "@/components/sections/ServicesSection";
+import ProcessSection from "@/components/sections/ProcessSection";
+import PortfolioSection from "@/components/sections/PortfolioSection";
+import WhySection from "@/components/sections/WhySection";
+import CTASection from "@/components/sections/CTASection";
+import ContactSection from "@/components/sections/ContactSection";
+import Footer from "@/components/Footer";
+
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const elements = document.querySelectorAll(".fade-up, .fade-left, .fade-right, .scale-in");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: "0px 0px -20px 0px" }
+      );
+      elements.forEach((el) => observer.observe(el));
+      return () => observer.disconnect();
+    }, 80);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div
+      className="min-h-screen"
+      style={{ backgroundColor: "#0F0F12" }}
+    >
+      <Navbar />
       <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
+        <HeroSection />
+        <AboutSection />
+        <ServicesSection />
+        <ProcessSection />
+        <PortfolioSection />
+        <WhySection />
+        <CTASection />
+        <ContactSection />
       </main>
+      <Footer />
     </div>
   );
 }
