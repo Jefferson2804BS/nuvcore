@@ -5,6 +5,9 @@ import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
 import { createContact, getContacts, createNotification, getNotifications, markNotificationAsRead, deleteNotification, getUnreadNotificationCount } from "./db";
 import { notifyOwner } from "./_core/notification";
+import { broadcastNotification } from "./_core/websocket";
+import { sendContactNotificationEmail } from "./_core/email";
+import { ENV } from "./_core/env";
 
 export const appRouter = router({
   system: systemRouter,
@@ -45,6 +48,24 @@ export const appRouter = router({
           await notifyOwner({
             title: "Novo Pedido de Diagnóstico",
             content: `${input.name} (${input.email}) solicitou um diagnóstico.\n\nEmpresa: ${input.company || "Não informada"}\nTelefone: ${input.phone || "Não informado"}\n\nMensagem: ${input.message}`,
+          });
+          
+          // Broadcast notification via WebSocket
+          broadcastNotification({
+            type: "info",
+            title: "Novo Contato Recebido",
+            message: `${input.name} enviou uma solicitação de diagnóstico`,
+            actionUrl: "/admin/contacts",
+          });
+          
+          // Send email notification
+          const ownerEmail = "nuvcore.agency@gmail.com"; // You can make this configurable
+          await sendContactNotificationEmail(ownerEmail, {
+            name: input.name,
+            email: input.email,
+            phone: input.phone,
+            company: input.company,
+            message: input.message,
           });
 
           return {

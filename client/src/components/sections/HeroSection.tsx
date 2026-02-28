@@ -63,7 +63,7 @@ export default function HeroSection() {
           {/* Label */}
           <div className="flex items-center gap-3 mb-8 fade-up">
             <span className="nv-divider" />
-            <span className="nv-label">Desenvolvimento Web Estratégico</span>
+            <span className="nv-label">Desenvolvimento Web & Design</span>
           </div>
 
           {/* Headline */}

@@ -10,3 +10,10 @@
 - [x] Integrar notificações com formulário de contato
 - [x] Criar página de histórico de notificações
 - [x] Testar sistema completo de notificações
+
+## Melhorias Solicitadas
+
+- [x] Implementar WebSocket para notificações em tempo real
+- [x] Criar painel admin de notificações
+- [x] Integrar com email/Slack para notificações
+- [ ] Criar manual passo a passo de todas as funcionalidades

@@ -12,7 +12,7 @@ const services = [
   {
     icon: Code2,
     number: "01",
-    title: "Desenvolvimento Web Estratégico",
+    title: "Desenvolvimento Web & Design",
     description:
       "Eu desenvolvo sites institucionais e plataformas digitais com foco em performance, posicionamento e conversão. Cada linha de código tem um propósito.",
     highlights: ["React & Next.js", "Performance otimizada", "SEO técnico", "Responsivo"],
