@@ -3,7 +3,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { z } from "zod";
-import { createContact, getContacts } from "./db";
+import { createContact, getContacts, createNotification, getNotifications, markNotificationAsRead, deleteNotification, getUnreadNotificationCount } from "./db";
 import { notifyOwner } from "./_core/notification";
 
 export const appRouter = router({
@@ -63,6 +63,77 @@ export const appRouter = router({
       } catch (error) {
         console.error("[Contact] Failed to list contacts:", error);
         return [];
+      }
+    }),
+  }),
+
+  notification: router({
+    create: publicProcedure
+      .input(
+        z.object({
+          type: z.enum(["success", "error", "warning", "info"]),
+          title: z.string().min(1, "Título é obrigatório"),
+          message: z.string().min(1, "Mensagem é obrigatória"),
+          actionUrl: z.string().optional(),
+          metadata: z.string().optional(),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        try {
+          await createNotification({
+            userId: ctx.user?.id || null,
+            type: input.type,
+            title: input.title,
+            message: input.message,
+            actionUrl: input.actionUrl,
+            metadata: input.metadata,
+          });
+          return { success: true };
+        } catch (error) {
+          console.error("[Notification] Failed to create notification:", error);
+          throw new Error("Falha ao criar notificação");
+        }
+      }),
+
+    list: publicProcedure.query(async ({ ctx }) => {
+      try {
+        return await getNotifications(ctx.user?.id);
+      } catch (error) {
+        console.error("[Notification] Failed to list notifications:", error);
+        return [];
+      }
+    }),
+
+    markAsRead: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        try {
+          await markNotificationAsRead(input.id);
+          return { success: true };
+        } catch (error) {
+          console.error("[Notification] Failed to mark as read:", error);
+          throw new Error("Falha ao marcar como lido");
+        }
+      }),
+
+    delete: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        try {
+          await deleteNotification(input.id);
+          return { success: true };
+        } catch (error) {
+          console.error("[Notification] Failed to delete notification:", error);
+          throw new Error("Falha ao deletar notificação");
+        }
+      }),
+
+    unreadCount: publicProcedure.query(async ({ ctx }) => {
+      try {
+        return await getUnreadNotificationCount(ctx.user?.id);
+      } catch (error) {
+        console.error("[Notification] Failed to get unread count:", error);
+        return 0;
       }
     }),
   }),

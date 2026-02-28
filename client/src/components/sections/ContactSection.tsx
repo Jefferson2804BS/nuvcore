@@ -2,14 +2,16 @@
  * NUVCORE — Contact Section
  * Design: "Precision Dark" — two-column: info + form
  * Contact: nuvcore.agency@gmail.com | @nuvcore
- * Backend: tRPC integration for form submission
+ * Backend: tRPC integration for form submission with notifications
  */
 
 import { useState } from "react";
 import { Mail, Instagram, Send, CheckCircle, AlertCircle } from "lucide-react";
 import { trpc } from "@/lib/trpc";
+import { useNotification } from "@/contexts/NotificationContext";
 
 export default function ContactSection() {
+  const { addToast } = useNotification();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,11 +27,27 @@ export default function ContactSection() {
       setSubmitted(true);
       setFormData({ name: "", email: "", phone: "", company: "", message: "" });
       setError(null);
+      
+      // Add success toast notification
+      addToast({
+        type: "success",
+        title: "Solicitação Enviada!",
+        message: "Seu pedido de diagnóstico foi recebido. Entraremos em contato em breve.",
+      });
+      
       // Reset success message after 5 seconds
       setTimeout(() => setSubmitted(false), 5000);
     },
     onError: (err) => {
-      setError(err.message || "Erro ao enviar formulário. Tente novamente.");
+      const errorMessage = err.message || "Erro ao enviar formulário. Tente novamente.";
+      setError(errorMessage);
+      
+      // Add error toast notification
+      addToast({
+        type: "error",
+        title: "Erro ao Enviar",
+        message: errorMessage,
+      });
     },
   });
 
@@ -45,6 +63,11 @@ export default function ContactSection() {
     // Validação básica
     if (!formData.name || !formData.email || !formData.message) {
       setError("Preencha todos os campos obrigatórios");
+      addToast({
+        type: "warning",
+        title: "Campos Obrigatórios",
+        message: "Preencha todos os campos obrigatórios",
+      });
       return;
     }
 

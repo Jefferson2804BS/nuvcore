@@ -43,3 +43,24 @@ export const contacts = mysqlTable("contacts", {
 
 export type Contact = typeof contacts.$inferSelect;
 export type InsertContact = typeof contacts.$inferInsert;
+
+
+/**
+ * Notifications system for NUVCORE
+ * Stores all notifications with type, status, and metadata
+ */
+export const notifications = mysqlTable("notifications", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").references(() => users.id),
+  type: mysqlEnum("type", ["success", "error", "warning", "info"]).default("info").notNull(),
+  title: varchar("title", { length: 255 }).notNull(),
+  message: text("message").notNull(),
+  read: int("read").default(0).notNull(), // 0 = unread, 1 = read
+  actionUrl: varchar("actionUrl", { length: 512 }),
+  metadata: text("metadata"), // JSON string for additional data
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Notification = typeof notifications.$inferSelect;
+export type InsertNotification = typeof notifications.$inferInsert;

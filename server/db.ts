@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, contacts } from "../drizzle/schema";
+import { InsertUser, users, contacts, notifications, InsertNotification } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -130,5 +130,111 @@ export async function getContacts() {
   } catch (error) {
     console.error("[Database] Failed to get contacts:", error);
     throw error;
+  }
+}
+
+
+export async function createNotification(data: InsertNotification) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot create notification: database not available");
+    throw new Error("Database not available");
+  }
+
+  try {
+    const result = await db.insert(notifications).values({
+      userId: data.userId || null,
+      type: data.type || "info",
+      title: data.title,
+      message: data.message,
+      read: 0,
+      actionUrl: data.actionUrl || null,
+      metadata: data.metadata || null,
+    });
+    return result;
+  } catch (error) {
+    console.error("[Database] Failed to create notification:", error);
+    throw error;
+  }
+}
+
+export async function getNotifications(userId?: number) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot get notifications: database not available");
+    return [];
+  }
+
+  try {
+    const result = await db
+      .select()
+      .from(notifications)
+      .orderBy(notifications.createdAt);
+    
+    if (userId) {
+      return result.filter(n => n.userId === userId);
+    }
+    return result;
+  } catch (error) {
+    console.error("[Database] Failed to get notifications:", error);
+    throw error;
+  }
+}
+
+export async function markNotificationAsRead(notificationId: number) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot mark notification as read: database not available");
+    throw new Error("Database not available");
+  }
+
+  try {
+    return await db
+      .update(notifications)
+      .set({ read: 1 })
+      .where(eq(notifications.id, notificationId));
+  } catch (error) {
+    console.error("[Database] Failed to mark notification as read:", error);
+    throw error;
+  }
+}
+
+export async function deleteNotification(notificationId: number) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot delete notification: database not available");
+    throw new Error("Database not available");
+  }
+
+  try {
+    return await db
+      .delete(notifications)
+      .where(eq(notifications.id, notificationId));
+  } catch (error) {
+    console.error("[Database] Failed to delete notification:", error);
+    throw error;
+  }
+}
+
+export async function getUnreadNotificationCount(userId?: number) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot get unread count: database not available");
+    return 0;
+  }
+
+  try {
+    const result = await db
+      .select()
+      .from(notifications)
+      .where(eq(notifications.read, 0));
+    
+    if (userId) {
+      return result.filter(n => n.userId === userId).length;
+    }
+    return result.length;
+  } catch (error) {
+    console.error("[Database] Failed to get unread count:", error);
+    return 0;
   }
 }
