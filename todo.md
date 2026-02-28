@@ -16,4 +16,4 @@
 - [x] Implementar WebSocket para notificações em tempo real
 - [x] Criar painel admin de notificações
 - [x] Integrar com email/Slack para notificações
-- [ ] Criar manual passo a passo de todas as funcionalidades
+- [x] Criar manual passo a passo de todas as funcionalidades
