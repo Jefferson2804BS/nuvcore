@@ -66,6 +66,10 @@ export default function CTASection() {
               Solicitar Diagnóstico Gratuito
               <ArrowRight size={18} />
             </button>
+            <a href="/iniciar-projeto" className="nv-btn-secondary text-base px-8 py-4">
+              Começar Projeto
+              <ArrowRight size={18} />
+            </a>
           </div>
 
           <p

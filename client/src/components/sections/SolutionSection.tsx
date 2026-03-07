@@ -121,37 +121,7 @@ export default function SolutionSection() {
           })}
         </div>
 
-        {/* CTA */}
-        <div className="mt-16 text-center fade-up">
-          <p
-            className="text-lg mb-6"
-            style={{
-              color: "rgba(242, 242, 242, 0.7)",
-              fontFamily: "'Inter', sans-serif",
-            }}
-          >
-            Pronto para transformar sua presença digital?
-          </p>
-          <button
-            className="px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg"
-            style={{
-              backgroundColor: "#C41B2C",
-              color: "#F2F2F2",
-              fontFamily: "'Inter', sans-serif",
-              transform: "scale(1)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "#A01624";
-              e.currentTarget.style.transform = "scale(1.05)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "#C41B2C";
-              e.currentTarget.style.transform = "scale(1)";
-            }}
-          >
-            Solicitar Projeto
-          </button>
-        </div>
+
       </div>
     </section>
   );

@@ -184,13 +184,18 @@ export default function FrameworkSection() {
           >
             Quer ver o NUVCORE FRAMEWORK™ em ação?
           </p>
-          <button
-            className="px-8 py-4 rounded-lg font-semibold transition-all duration-300"
+          <a
+            href="https://wa.me/5511912830541?text=Ol%C3%A1!%20Encontrei%20o%20site%20da%20NUVCORE%20e%20gostaria%20de%20conversar%20com%20um%20especialista%20sobre%20o%20desenvolvimento%20de%20um%20projeto%20para%20minha%20empresa."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-4 rounded-lg font-semibold transition-all duration-300"
             style={{
               backgroundColor: "transparent",
               color: "#C41B2C",
               border: "2px solid #C41B2C",
               fontFamily: "'Inter', sans-serif",
+              textDecoration: "none",
+              cursor: "pointer",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = "#C41B2C";
@@ -202,7 +207,7 @@ export default function FrameworkSection() {
             }}
           >
             Falar com Especialista
-          </button>
+          </a>
         </div>
       </div>
     </section>
