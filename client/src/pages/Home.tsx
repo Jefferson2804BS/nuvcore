@@ -8,10 +8,15 @@ import { useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
+import ProblemSection from "@/components/sections/ProblemSection";
+import SolutionSection from "@/components/sections/SolutionSection";
+import FrameworkSection from "@/components/sections/FrameworkSection";
 import AboutSection from "@/components/sections/AboutSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ProcessSection from "@/components/sections/ProcessSection";
+import FounderSection from "@/components/sections/FounderSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
+import AuthoritySection from "@/components/sections/AuthoritySection";
 import WhySection from "@/components/sections/WhySection";
 import CTASection from "@/components/sections/CTASection";
 import ContactSection from "@/components/sections/ContactSection";
@@ -49,10 +54,15 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
+        <ProblemSection />
+        <SolutionSection />
+        <FrameworkSection />
         <AboutSection />
         <ServicesSection />
         <ProcessSection />
+        <FounderSection />
         <PortfolioSection />
+        <AuthoritySection />
         <WhySection />
         <CTASection />
         <ContactSection />
