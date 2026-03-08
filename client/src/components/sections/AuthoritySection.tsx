@@ -230,6 +230,12 @@ export default function AuthoritySection() {
             Pronto para fazer parte dessa história de sucesso?
           </p>
           <button
+            onClick={() => {
+              const ctaButton = document.querySelector('a[href="/iniciar-projeto"]');
+              if (ctaButton) {
+                ctaButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }}
             className="px-8 py-4 rounded-lg font-semibold transition-all duration-300"
             style={{
               backgroundColor: "#C41B2C",

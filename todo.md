@@ -45,4 +45,9 @@
 - [x] Configurar envio de emails para nuvcore.oficial@gmail.com
 - [x] Adicionar mensagem de confirmação após submit
 - [x] Otimizar responsividade da nova página
-- [ ] Testar e salvar checkpoint
+- [x] Testar e salvar checkpoint
+
+
+## Ajustes Solicitados - Fase 3
+
+- [x] Fazer botão "Começar Projeto" dos depoimentos rolar até CTA
