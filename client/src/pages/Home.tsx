@@ -20,6 +20,8 @@ import AuthoritySection from "@/components/sections/AuthoritySection";
 import WhySection from "@/components/sections/WhySection";
 import CTASection from "@/components/sections/CTASection";
 import ContactSection from "@/components/sections/ContactSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
+import DiferenciaisSection from "@/components/sections/DiferenciaisSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -54,16 +56,10 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
-        <ProblemSection />
-        <SolutionSection />
-        <FrameworkSection />
         <AboutSection />
         <ServicesSection />
-        <ProcessSection />
-        <FounderSection />
-        <PortfolioSection />
-        <AuthoritySection />
-        <WhySection />
+        <ProjectsSection />
+        <DiferenciaisSection />
         <CTASection />
         <ContactSection />
       </main>

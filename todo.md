@@ -51,3 +51,15 @@
 ## Ajustes Solicitados - Fase 3
 
 - [x] Fazer botão "Começar Projeto" dos depoimentos rolar até CTA
+
+
+## Melhorias Solicitadas - Fase 4 (Portfólio e Estrutura)
+
+- [x] Criar seção "Projetos Desenvolvidos" com 3 projetos
+- [x] Implementar cards modernos com preview, título, segmento e descrição
+- [x] Adicionar botão "Visitar Site" com link externo
+- [x] Criar seção "Diferenciais" com 4 itens
+- [x] Melhorar CTA "Pronto para criar seu site?"
+- [x] Reorganizar hierarquia: Hero > Sobre > Serviços > Projetos > Diferenciais > Contato
+- [x] Otimizar responsividade de todas as seções
+- [ ] Testar e salvar checkpoint
