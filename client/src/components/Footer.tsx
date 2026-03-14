@@ -90,14 +90,14 @@ export default function Footer() {
             </div>
             <div className="space-y-3">
               <a
-                href="mailto:nuvcore.agency@gmail.com"
+                href="mailto:nuvcore.oficial@gmail.com"
                 className="flex items-center gap-3 text-sm transition-colors duration-200"
                 style={{ color: "rgba(242,242,242,0.5)", fontFamily: "'Inter', sans-serif", textDecoration: "none" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "#F2F2F2")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(242,242,242,0.5)")}
               >
                 <Mail size={14} />
-                nuvcore.agency@gmail.com
+                nuvcore.oficial@gmail.com
               </a>
               <a
                 href="https://instagram.com/nuvcore"

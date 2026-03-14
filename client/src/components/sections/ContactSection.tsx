@@ -1,7 +1,7 @@
 /*
  * NUVCORE — Contact Section
  * Design: "Precision Dark" — two-column: info + form
- * Contact: nuvcore.agency@gmail.com | @nuvcore
+ * Contact: nuvcore.oficial@gmail.com | @nuvcore
  * Backend: tRPC integration for form submission with notifications
  */
 
@@ -125,13 +125,13 @@ export default function ContactSection() {
                   </span>
                 </div>
                 <a
-                  href="mailto:nuvcore.agency@gmail.com"
+                  href="mailto:nuvcore.oficial@gmail.com"
                   className="text-lg font-medium transition-colors duration-200"
                   style={{ color: "#F2F2F2", fontFamily: "'Inter', sans-serif", textDecoration: "none" }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#C41B2C")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "#F2F2F2")}
                 >
-                  nuvcore.agency@gmail.com
+                  nuvcore.oficial@gmail.com
                 </a>
               </div>
 

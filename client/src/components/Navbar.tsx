@@ -7,7 +7,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
-const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663387028892/RLWfTMXfVFnGSRxy.png";
+const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663387028892/g9wfxJ5VyEKEsr9ErzHzmc/IMG_20260314_134008_784f7202.png";
 
 const navLinks = [
   { label: "Sobre", href: "#sobre" },
@@ -57,14 +57,9 @@ export default function Navbar() {
             <img
               src={LOGO_URL}
               alt="NUVCORE Logo"
-              className="w-10 h-10 object-contain"
+              className="h-11 object-contain"
+              style={{ maxWidth: "200px" }}
             />
-            <span
-              className="text-white font-bold text-lg tracking-tight"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-            >
-              NUVCORE
-            </span>
           </a>
 
           {/* Desktop Nav */}

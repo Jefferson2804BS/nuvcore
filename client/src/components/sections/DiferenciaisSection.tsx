@@ -1,31 +1,32 @@
 import { useEffect, useRef, useState } from "react";
+import { Palette, Zap, Target, Users } from "lucide-react";
 
 interface Diferencial {
   id: number;
   title: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
 const diferenciais: Diferencial[] = [
   {
     id: 1,
     title: "Design moderno e responsivo",
-    icon: "🎨",
+    icon: <Palette className="w-8 h-8" />,
   },
   {
     id: 2,
     title: "Desenvolvimento rápido e eficiente",
-    icon: "⚡",
+    icon: <Zap className="w-8 h-8" />,
   },
   {
     id: 3,
     title: "Soluções digitais personalizadas",
-    icon: "🎯",
+    icon: <Target className="w-8 h-8" />,
   },
   {
     id: 4,
     title: "Experiência focada no usuário",
-    icon: "👥",
+    icon: <Users className="w-8 h-8" />,
   },
 ];
 
@@ -168,9 +169,10 @@ export default function DiferenciaisSection() {
               >
                 {/* Icon */}
                 <div
-                  className="text-5xl mb-4"
+                  className="mb-4 flex justify-center"
                   style={{
                     transition: "transform 0.3s ease",
+                    color: "#C41B2C",
                   }}
                   onMouseEnter={(e) => {
                     (e.currentTarget as HTMLElement).style.transform =

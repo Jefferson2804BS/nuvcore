@@ -63,3 +63,15 @@
 - [x] Reorganizar hierarquia: Hero > Sobre > Serviços > Projetos > Diferenciais > Contato
 - [x] Otimizar responsividade de todas as seções
 - [x] Testar e salvar checkpoint
+
+
+## Melhorias Solicitadas - Fase 5 (Header, Ícones e Email)
+
+- [x] Fazer upload da logo horizontal oficial
+- [x] Atualizar header com logo horizontal (44px height)
+- [x] Remover emojis de todas as seções
+- [x] Substituir emojis por ícones minimalistas modernos
+- [x] Atualizar email para nuvcore.oficial@gmail.com
+- [x] Testar responsividade do header
+- [x] Testar design final
+- [ ] Salvar checkpoint

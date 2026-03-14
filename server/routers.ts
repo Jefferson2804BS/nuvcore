@@ -59,7 +59,7 @@ export const appRouter = router({
           });
           
           // Send email notification
-          const ownerEmail = "nuvcore.agency@gmail.com"; // You can make this configurable
+          const ownerEmail = "nuvcore.oficial@gmail.com"; // You can make this configurable
           await sendContactNotificationEmail(ownerEmail, {
             name: input.name,
             email: input.email,
