@@ -18,7 +18,7 @@ const projects: Project[] = [
       "Website desenvolvido para um professor de violino que apresenta seu trabalho, sua história e as aulas que oferece.",
     url: "https://gersinhooaprendiz.lovable.app/",
     image:
-      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&h=300&fit=crop",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663387028892/g9wfxJ5VyEKEsr9ErzHzmc/Screenshot_2026-03-12-00-28-30-463_com.whatsapp-edit_ad1ae523.jpg",
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const projects: Project[] = [
       "Site institucional desenvolvido para academia com foco em apresentar estrutura, serviços e incentivar novos alunos a conhecer o espaço.",
     url: "https://bluefit-fit.lovable.app/",
     image:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=300&fit=crop",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663387028892/g9wfxJ5VyEKEsr9ErzHzmc/IMG_20260314_130820_426713cf.jpg",
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const projects: Project[] = [
       "Website desenvolvido para clínica odontológica com objetivo de apresentar os serviços oferecidos e facilitar o contato com novos pacientes.",
     url: "https://odontomax.lovable.app/",
     image:
-      "https://images.unsplash.com/photo-1631217314830-4e6c9e9a4b6f?w=500&h=300&fit=crop",
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663387028892/g9wfxJ5VyEKEsr9ErzHzmc/IMG_20260314_130846_e1889b5a.jpg",
   },
 ];
 

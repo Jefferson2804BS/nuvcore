@@ -62,4 +62,4 @@
 - [x] Melhorar CTA "Pronto para criar seu site?"
 - [x] Reorganizar hierarquia: Hero > Sobre > Serviços > Projetos > Diferenciais > Contato
 - [x] Otimizar responsividade de todas as seções
-- [ ] Testar e salvar checkpoint
+- [x] Testar e salvar checkpoint
