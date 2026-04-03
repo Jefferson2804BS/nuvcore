@@ -1,83 +1,14 @@
 /*
  * NUVCORE — Contact Section
- * Design: "Precision Dark" — two-column: info + form
+ * Design: "Precision Dark" — Briefing section with Google Form
  * Contact: nuvcore.oficial@gmail.com | @nuvcore
- * Backend: tRPC integration for form submission with notifications
  */
 
-import { useState } from "react";
-import { Mail, Instagram, Send, CheckCircle, AlertCircle } from "lucide-react";
-import { trpc } from "@/lib/trpc";
-import { useNotification } from "@/contexts/NotificationContext";
+import { Mail, Instagram, ExternalLink } from "lucide-react";
 
 export default function ContactSection() {
-  const { addToast } = useNotification();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const submitDiagnostic = trpc.contact.submitDiagnostic.useMutation({
-    onSuccess: () => {
-      setSubmitted(true);
-      setFormData({ name: "", email: "", phone: "", company: "", message: "" });
-      setError(null);
-      
-      // Add success toast notification
-      addToast({
-        type: "success",
-        title: "Solicitação Enviada!",
-        message: "Seu pedido de diagnóstico foi recebido. Entraremos em contato em breve.",
-      });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => setSubmitted(false), 5000);
-    },
-    onError: (err) => {
-      const errorMessage = err.message || "Erro ao enviar formulário. Tente novamente.";
-      setError(errorMessage);
-      
-      // Add error toast notification
-      addToast({
-        type: "error",
-        title: "Erro ao Enviar",
-        message: errorMessage,
-      });
-    },
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    setError(null);
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-
-    // Validação básica
-    if (!formData.name || !formData.email || !formData.message) {
-      setError("Preencha todos os campos obrigatórios");
-      addToast({
-        type: "warning",
-        title: "Campos Obrigatórios",
-        message: "Preencha todos os campos obrigatórios",
-      });
-      return;
-    }
-
-    submitDiagnostic.mutate({
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone || undefined,
-      company: formData.company || undefined,
-      message: formData.message,
-    });
+  const handleBriefingClick = () => {
+    window.open("https://forms.gle/JK1cLA8zbAJRe2uz9", "_blank");
   };
 
   return (
@@ -174,185 +105,60 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right: Form */}
+          {/* Right: Briefing Section */}
           <div className="fade-up delay-400">
-            {submitted ? (
-              <div
-                className="flex flex-col items-center justify-center p-8 rounded-lg text-center"
-                style={{ backgroundColor: "rgba(196, 27, 44, 0.1)", border: "1px solid rgba(196, 27, 44, 0.3)" }}
+            <div
+              className="p-8 rounded-lg border transition-all duration-300"
+              style={{
+                backgroundColor: "rgba(196, 27, 44, 0.05)",
+                borderColor: "rgba(196, 27, 44, 0.2)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(196, 27, 44, 0.1)";
+                e.currentTarget.style.borderColor = "rgba(196, 27, 44, 0.4)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(196, 27, 44, 0.05)";
+                e.currentTarget.style.borderColor = "rgba(196, 27, 44, 0.2)";
+              }}
+            >
+              <h3
+                className="text-2xl font-bold text-white mb-3"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
-                <CheckCircle size={48} style={{ color: "#C41B2C", marginBottom: "16px" }} />
-                <h3 className="text-xl font-bold text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  Obrigado!
-                </h3>
-                <p style={{ color: "rgba(242,242,242,0.6)", fontFamily: "'Inter', sans-serif" }}>
-                  Sua solicitação foi enviada com sucesso. Entraremos em contato em breve.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {error && (
-                  <div
-                    className="flex items-center gap-3 p-3 rounded-lg"
-                    style={{ backgroundColor: "rgba(196, 27, 44, 0.15)", border: "1px solid rgba(196, 27, 44, 0.4)" }}
-                  >
-                    <AlertCircle size={18} style={{ color: "#C41B2C", flexShrink: 0 }} />
-                    <p style={{ color: "#F2F2F2", fontFamily: "'Inter', sans-serif", fontSize: "14px" }}>
-                      {error}
-                    </p>
-                  </div>
-                )}
-
-                {/* Name */}
-                <div>
-                  <label
-                    className="block text-sm font-medium mb-2"
-                    style={{ color: "rgba(242,242,242,0.7)", fontFamily: "'Inter', sans-serif" }}
-                  >
-                    Nome *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Seu nome"
-                    className="w-full px-4 py-2 rounded-lg border transition-colors duration-200"
-                    style={{
-                      backgroundColor: "rgba(255,255,255,0.05)",
-                      borderColor: "rgba(255,255,255,0.1)",
-                      color: "#F2F2F2",
-                      fontFamily: "'Inter', sans-serif",
-                    }}
-                    onFocus={(e) => (e.currentTarget.style.borderColor = "#C41B2C")}
-                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
-                  />
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label
-                    className="block text-sm font-medium mb-2"
-                    style={{ color: "rgba(242,242,242,0.7)", fontFamily: "'Inter', sans-serif" }}
-                  >
-                    E-mail *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="seu@email.com"
-                    className="w-full px-4 py-2 rounded-lg border transition-colors duration-200"
-                    style={{
-                      backgroundColor: "rgba(255,255,255,0.05)",
-                      borderColor: "rgba(255,255,255,0.1)",
-                      color: "#F2F2F2",
-                      fontFamily: "'Inter', sans-serif",
-                    }}
-                    onFocus={(e) => (e.currentTarget.style.borderColor = "#C41B2C")}
-                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
-                  />
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <label
-                    className="block text-sm font-medium mb-2"
-                    style={{ color: "rgba(242,242,242,0.7)", fontFamily: "'Inter', sans-serif" }}
-                  >
-                    Telefone
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="(11) 99999-9999"
-                    className="w-full px-4 py-2 rounded-lg border transition-colors duration-200"
-                    style={{
-                      backgroundColor: "rgba(255,255,255,0.05)",
-                      borderColor: "rgba(255,255,255,0.1)",
-                      color: "#F2F2F2",
-                      fontFamily: "'Inter', sans-serif",
-                    }}
-                    onFocus={(e) => (e.currentTarget.style.borderColor = "#C41B2C")}
-                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
-                  />
-                </div>
-
-                {/* Company */}
-                <div>
-                  <label
-                    className="block text-sm font-medium mb-2"
-                    style={{ color: "rgba(242,242,242,0.7)", fontFamily: "'Inter', sans-serif" }}
-                  >
-                    Empresa
-                  </label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    placeholder="Nome da sua empresa"
-                    className="w-full px-4 py-2 rounded-lg border transition-colors duration-200"
-                    style={{
-                      backgroundColor: "rgba(255,255,255,0.05)",
-                      borderColor: "rgba(255,255,255,0.1)",
-                      color: "#F2F2F2",
-                      fontFamily: "'Inter', sans-serif",
-                    }}
-                    onFocus={(e) => (e.currentTarget.style.borderColor = "#C41B2C")}
-                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
-                  />
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label
-                    className="block text-sm font-medium mb-2"
-                    style={{ color: "rgba(242,242,242,0.7)", fontFamily: "'Inter', sans-serif" }}
-                  >
-                    Mensagem *
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Conte-me sobre seu projeto..."
-                    rows={5}
-                    className="w-full px-4 py-2 rounded-lg border transition-colors duration-200 resize-none"
-                    style={{
-                      backgroundColor: "rgba(255,255,255,0.05)",
-                      borderColor: "rgba(255,255,255,0.1)",
-                      color: "#F2F2F2",
-                      fontFamily: "'Inter', sans-serif",
-                    }}
-                    onFocus={(e) => (e.currentTarget.style.borderColor = "#C41B2C")}
-                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={submitDiagnostic.isPending}
-                  className="w-full nv-btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {submitDiagnostic.isPending ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      Enviar Solicitação
-                      <Send size={16} />
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
+                Solicite seu Projeto
+              </h3>
+              <p
+                className="text-base mb-6"
+                style={{ color: "rgba(242,242,242,0.7)", fontFamily: "'Inter', sans-serif", lineHeight: "1.6" }}
+              >
+                Para entendermos melhor sua necessidade, pedimos que você preencha um briefing rápido. Isso nos ajuda a criar uma solução mais estratégica e personalizada para você.
+              </p>
+              <button
+                onClick={handleBriefingClick}
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+                style={{
+                  backgroundColor: "#C41B2C",
+                  color: "#F2F2F2",
+                  fontFamily: "'Inter', sans-serif",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#A01622";
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 8px 16px rgba(196, 27, 44, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#C41B2C";
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                Preencher Briefing
+                <ExternalLink size={18} />
+              </button>
+            </div>
           </div>
         </div>
       </div>

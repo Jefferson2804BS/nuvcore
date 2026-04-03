@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { ExternalLink } from "lucide-react";
 
 interface Project {
   id: number;
@@ -6,7 +7,6 @@ interface Project {
   segment: string;
   description: string;
   url: string;
-  image: string;
 }
 
 const projects: Project[] = [
@@ -17,8 +17,6 @@ const projects: Project[] = [
     description:
       "Website desenvolvido para um professor de violino que apresenta seu trabalho, sua história e as aulas que oferece.",
     url: "https://gersinhooaprendiz.lovable.app/",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663387028892/g9wfxJ5VyEKEsr9ErzHzmc/Screenshot_2026-03-12-00-28-30-463_com.whatsapp-edit_ad1ae523.jpg",
   },
   {
     id: 2,
@@ -27,8 +25,6 @@ const projects: Project[] = [
     description:
       "Site institucional desenvolvido para academia com foco em apresentar estrutura, serviços e incentivar novos alunos a conhecer o espaço.",
     url: "https://bluefit-fit.lovable.app/",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663387028892/g9wfxJ5VyEKEsr9ErzHzmc/IMG_20260314_130820_426713cf.jpg",
   },
   {
     id: 3,
@@ -37,8 +33,22 @@ const projects: Project[] = [
     description:
       "Website desenvolvido para clínica odontológica com objetivo de apresentar os serviços oferecidos e facilitar o contato com novos pacientes.",
     url: "https://odontomax.lovable.app/",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/310519663387028892/g9wfxJ5VyEKEsr9ErzHzmc/IMG_20260314_130846_e1889b5a.jpg",
+  },
+  {
+    id: 4,
+    title: "Vila Real Planejados",
+    segment: "Marcenaria",
+    description:
+      "Marcenaria especializada em móveis planejados. Site desenvolvido para apresentar portfólio de trabalhos e facilitar contato com clientes.",
+    url: "https://vilarealplanejados.lovable.app/",
+  },
+  {
+    id: 5,
+    title: "Nuvcore Hamburgueria",
+    segment: "Restaurante",
+    description:
+      "Hamburgueria com sistema de carrinho e cálculo de frete. Plataforma completa para pedidos online com integração de pagamento.",
+    url: "https://nuvcorehaburgeriateste.lovable.app",
   },
 ];
 
@@ -57,11 +67,11 @@ export default function ProjectsSection() {
               (entry.target as HTMLElement).getAttribute("data-project-id") ||
                 "0"
             );
-                setVisibleProjects((prev) => {
-                  const newSet = new Set(prev);
-                  newSet.add(projectId);
-                  return newSet;
-                });
+            setVisibleProjects((prev) => {
+              const newSet = new Set(prev);
+              newSet.add(projectId);
+              return newSet;
+            });
           }
         });
       },
@@ -159,13 +169,16 @@ export default function ProjectsSection() {
               }}
             >
               <div
-                className="rounded-xl overflow-hidden h-full flex flex-col"
+                className="rounded-xl overflow-hidden h-full flex flex-col p-8"
                 style={{
                   backgroundColor: "rgba(255, 255, 255, 0.05)",
                   border: "1px solid rgba(196, 27, 44, 0.2)",
                   backdropFilter: "blur(10px)",
                   transition: "all 0.3s ease",
                   cursor: "pointer",
+                  minHeight: "320px",
+                  display: "flex",
+                  flexDirection: "column",
                 }}
                 onMouseEnter={(e) => {
                   const card = e.currentTarget;
@@ -183,97 +196,69 @@ export default function ProjectsSection() {
                   card.style.boxShadow = "none";
                 }}
               >
-                {/* Image */}
-                <div className="relative overflow-hidden h-48 bg-gradient-to-br from-gray-800 to-gray-900">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                    style={{
-                      transition: "transform 0.3s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.target as HTMLImageElement).style.transform =
-                        "scale(1.05)";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.target as HTMLImageElement).style.transform =
-                        "scale(1)";
-                    }}
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, rgba(196, 27, 44, 0.1) 0%, transparent 100%)",
-                    }}
-                  />
+                {/* Segment Badge */}
+                <div
+                  className="inline-block mb-4 px-3 py-1 rounded-full text-xs font-semibold"
+                  style={{
+                    backgroundColor: "rgba(196, 27, 44, 0.2)",
+                    color: "#C41B2C",
+                    fontFamily: "'Inter', sans-serif",
+                    width: "fit-content",
+                  }}
+                >
+                  {project.segment}
                 </div>
 
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-grow">
-                  {/* Segment */}
-                  <div
-                    className="inline-block mb-3 px-3 py-1 rounded-full text-xs font-semibold"
-                    style={{
-                      backgroundColor: "rgba(196, 27, 44, 0.2)",
-                      color: "#C41B2C",
-                      fontFamily: "'Inter', sans-serif",
-                      width: "fit-content",
-                    }}
-                  >
-                    {project.segment}
-                  </div>
+                {/* Title */}
+                <h3
+                  className="text-2xl font-bold mb-3"
+                  style={{
+                    color: "#F2F2F2",
+                    fontFamily: "'Space Grotesk', sans-serif",
+                  }}
+                >
+                  {project.title}
+                </h3>
 
-                  {/* Title */}
-                  <h3
-                    className="text-xl font-bold mb-2"
-                    style={{
-                      color: "#F2F2F2",
-                      fontFamily: "'Space Grotesk', sans-serif",
-                    }}
-                  >
-                    {project.title}
-                  </h3>
+                {/* Description */}
+                <p
+                  className="text-base mb-8 flex-grow"
+                  style={{
+                    color: "rgba(242, 242, 242, 0.6)",
+                    fontFamily: "'Inter', sans-serif",
+                    lineHeight: "1.6",
+                  }}
+                >
+                  {project.description}
+                </p>
 
-                  {/* Description */}
-                  <p
-                    className="text-sm mb-6 flex-grow"
-                    style={{
-                      color: "rgba(242, 242, 242, 0.6)",
-                      fontFamily: "'Inter', sans-serif",
-                      lineHeight: "1.6",
-                    }}
-                  >
-                    {project.description}
-                  </p>
-
-                  {/* Button */}
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block px-6 py-2 rounded-lg font-semibold text-center transition-all duration-300"
-                    style={{
-                      backgroundColor: "#C41B2C",
-                      color: "#F2F2F2",
-                      fontFamily: "'Inter', sans-serif",
-                      textDecoration: "none",
-                    }}
-                    onMouseEnter={(e) => {
-                      const btn = e.currentTarget;
-                      btn.style.backgroundColor = "#A01624";
-                      btn.style.transform = "scale(1.05)";
-                    }}
-                    onMouseLeave={(e) => {
-                      const btn = e.currentTarget;
-                      btn.style.backgroundColor = "#C41B2C";
-                      btn.style.transform = "scale(1)";
-                    }}
-                  >
-                    Visitar Site →
-                  </a>
-                </div>
+                {/* Button */}
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+                  style={{
+                    backgroundColor: "#C41B2C",
+                    color: "#F2F2F2",
+                    fontFamily: "'Inter', sans-serif",
+                    textDecoration: "none",
+                    width: "100%",
+                  }}
+                  onMouseEnter={(e) => {
+                    const btn = e.currentTarget;
+                    btn.style.backgroundColor = "#A01624";
+                    btn.style.transform = "scale(1.02)";
+                  }}
+                  onMouseLeave={(e) => {
+                    const btn = e.currentTarget;
+                    btn.style.backgroundColor = "#C41B2C";
+                    btn.style.transform = "scale(1)";
+                  }}
+                >
+                  Visitar Site
+                  <ExternalLink size={18} />
+                </a>
               </div>
             </div>
           ))}

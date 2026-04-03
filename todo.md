@@ -75,3 +75,14 @@
 - [x] Testar responsividade do header
 - [x] Testar design final
 - [ ] Salvar checkpoint
+
+
+## Adaptação Solicitada - Fase 6 (Formulários e Projetos)
+
+- [x] Remover formulários internos (ContactSection, IniciarProjeto)
+- [x] Criar seção de briefing com Google Form
+- [x] Atualizar cards de projetos (remover imagens)
+- [x] Adicionar 2 novos projetos (Vila Real Planejados, Nuvcore Hamburgueria)
+- [x] Otimizar design minimalista dos cards
+- [x] Testar responsividade (desktop, tablet, mobile)
+- [ ] Salvar checkpoint final
