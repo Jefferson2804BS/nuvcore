@@ -85,4 +85,8 @@
 - [x] Adicionar 2 novos projetos (Vila Real Planejados, Nuvcore Hamburgueria)
 - [x] Otimizar design minimalista dos cards
 - [x] Testar responsividade (desktop, tablet, mobile)
-- [ ] Salvar checkpoint final
+- [x] Salvar checkpoint final
+
+## Correção Solicitada - Menu de Navegação
+
+- [x] Corrigir menu de navegação (remover transparência no início do site)
