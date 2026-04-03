@@ -242,6 +242,29 @@
     background-color: rgba(242, 242, 242, 0.05);
   }
 
+  .nv-btn-secondary {
+    background-color: transparent;
+    color: #F2F2F2;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    padding: 0.75rem 1.75rem;
+    border-radius: 0.375rem;
+    border: 1.5px solid #C41B2C;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  .nv-btn-secondary:hover {
+    background-color: rgba(196, 27, 44, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(196, 27, 44, 0.2);
+  }
+
   .nv-input {
     background-color: #16161A;
     border: 1px solid rgba(255, 255, 255, 0.1);

@@ -62,13 +62,31 @@ export default function CTASection() {
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center fade-up delay-300">
-            <button onClick={scrollToContact} className="nv-btn-primary text-base px-8 py-4">
-              Solicitar Diagnóstico Gratuito
-              <ArrowRight size={18} />
+            <button 
+              onClick={scrollToContact} 
+              className="nv-btn-primary text-base px-8 py-4 group"
+              style={{
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                Solicitar Diagnóstico Gratuito
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </span>
             </button>
-            <a href="/iniciar-projeto" className="nv-btn-secondary text-base px-8 py-4">
-              Começar Projeto
-              <ArrowRight size={18} />
+            <a 
+              href="/iniciar-projeto" 
+              className="nv-btn-secondary text-base px-8 py-4 group"
+              style={{
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                Começar Projeto
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </span>
             </a>
           </div>
 

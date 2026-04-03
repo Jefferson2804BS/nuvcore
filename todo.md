@@ -90,3 +90,11 @@
 ## Correção Solicitada - Menu de Navegação
 
 - [x] Corrigir menu de navegação (remover transparência no início do site)
+
+## Renovação de Botões - Fase 7
+
+- [x] Renovar botão "Solicitar Diagnóstico Gratuito" com design moderno
+- [x] Renovar botão "Começar Projeto" com design moderno
+- [x] Adicionar link do Google Form ao botão de "Preencher Briefing"
+- [x] Testar responsividade dos botões em mobile/tablet/desktop
+- [x] Testar interatividade e hover effects
