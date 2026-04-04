@@ -98,3 +98,10 @@
 - [x] Adicionar link do Google Form ao botão de "Preencher Briefing"
 - [x] Testar responsividade dos botões em mobile/tablet/desktop
 - [x] Testar interatividade e hover effects
+
+## Reorganização de Seções - Fase 8
+
+- [x] Remover botões de CTA da seção CTASection
+- [x] Mover botão de Briefing para a seção CTA
+- [x] Reorganizar layout da seção ContactSection
+- [x] Testar responsividade e layout final

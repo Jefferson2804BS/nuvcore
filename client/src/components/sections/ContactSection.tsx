@@ -39,10 +39,8 @@ export default function ContactSection() {
           </p>
         </div>
 
-        {/* Two-column layout */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left: Info */}
-          <div className="fade-up delay-300">
+        {/* Contact Info */}
+        <div className="fade-up delay-300 max-w-2xl">
             <div className="space-y-8">
               {/* Email */}
               <div>
@@ -104,63 +102,6 @@ export default function ContactSection() {
               </div>
             </div>
           </div>
-
-          {/* Right: Briefing Section */}
-          <div className="fade-up delay-400">
-            <div
-              className="p-8 rounded-lg border transition-all duration-300"
-              style={{
-                backgroundColor: "rgba(196, 27, 44, 0.05)",
-                borderColor: "rgba(196, 27, 44, 0.2)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "rgba(196, 27, 44, 0.1)";
-                e.currentTarget.style.borderColor = "rgba(196, 27, 44, 0.4)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "rgba(196, 27, 44, 0.05)";
-                e.currentTarget.style.borderColor = "rgba(196, 27, 44, 0.2)";
-              }}
-            >
-              <h3
-                className="text-2xl font-bold text-white mb-3"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-              >
-                Solicite seu Projeto
-              </h3>
-              <p
-                className="text-base mb-6"
-                style={{ color: "rgba(242,242,242,0.7)", fontFamily: "'Inter', sans-serif", lineHeight: "1.6" }}
-              >
-                Para entendermos melhor sua necessidade, pedimos que você preencha um briefing rápido. Isso nos ajuda a criar uma solução mais estratégica e personalizada para você.
-              </p>
-              <button
-                onClick={handleBriefingClick}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300"
-                style={{
-                  backgroundColor: "#C41B2C",
-                  color: "#F2F2F2",
-                  fontFamily: "'Inter', sans-serif",
-                  border: "none",
-                  cursor: "pointer",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#A01622";
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "0 8px 16px rgba(196, 27, 44, 0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "#C41B2C";
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
-                Preencher Briefing
-                <ExternalLink size={18} />
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
