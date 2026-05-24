@@ -1,9 +1,11 @@
 /*
  * NUVCORE — Global Styles
  * Design: "Precision Dark" — Dark SaaS Modernism
- * Colors: Tech Black #0F0F12 | Soft White #F2F2F2 | Red #C41B2C | Blue #2563EB
- * Typography: Space Grotesk (display) + Inter (body)
+ * Colors: #080808 | #101010 | #161616 | #E5001B | #F2EFE9 | #9A9490
+ * Typography: Space Grotesk (display) + DM Sans (body)
  */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=DM+Sans:wght@400;500&display=swap');
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -49,14 +51,14 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   /* NUVCORE Brand Tokens */
-  --color-brand-black: #0F0F12;
-  --color-brand-surface: #16161A;
-  --color-brand-surface-2: #1C1C22;
-  --color-brand-white: #F2F2F2;
-  --color-brand-red: #C41B2C;
-  --color-brand-red-dark: #8B0000;
-  --color-brand-blue: #2563EB;
-  --color-brand-blue-light: #3B82F6;
+  --color-bg-primary: #080808;
+  --color-bg-secondary: #101010;
+  --color-bg-elevated: #161616;
+  --color-red: #E5001B;
+  --color-red-hover: #BF0016;
+  --color-text-primary: #F2EFE9;
+  --color-text-secondary: #9A9490;
+  --color-border: #1E1E1E;
 }
 
 :root {
@@ -104,9 +106,11 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-color: #0F0F12;
-    color: #F2F2F2;
-    font-family: 'Inter', sans-serif;
+    background-color: #080808;
+    color: #F2EFE9;
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+    padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -171,12 +175,12 @@
   }
 
   .nv-label {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #C41B2C;
+    color: #E5001B;
   }
 
   .nv-divider {
@@ -199,8 +203,8 @@
   }
 
   .nv-btn-primary {
-    background-color: #C41B2C;
-    color: #F2F2F2;
+    background-color: #E5001B;
+    color: #080808;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
     font-size: 0.9rem;
@@ -216,7 +220,7 @@
   }
 
   .nv-btn-primary:hover {
-    background-color: #a51525;
+    background-color: #BF0016;
     transform: translateY(-1px);
   }
 
@@ -244,14 +248,14 @@
 
   .nv-btn-secondary {
     background-color: transparent;
-    color: #F2F2F2;
+    color: #F2EFE9;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
     font-size: 0.9rem;
     letter-spacing: 0.02em;
     padding: 0.75rem 1.75rem;
     border-radius: 0.375rem;
-    border: 1.5px solid #C41B2C;
+    border: 1.5px solid #E5001B;
     transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     display: inline-flex;
     align-items: center;
