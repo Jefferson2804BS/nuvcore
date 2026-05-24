@@ -18,9 +18,9 @@ export default function HowItWorksSection() {
   ];
 
   return (
-    <section className="py-20 md:py-32 px-4 md:px-6" style={{ backgroundColor: "#F5F0E8" }}>
+    <section className="py-20 md:py-32 px-4 md:px-6" style={{ backgroundColor: "#0A0A0A" }}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 md:mb-20" style={{ color: "#0A0A0A" }}>
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 md:mb-20" style={{ color: "#F0EDE8" }}>
           Como funciona
         </h2>
 
@@ -36,12 +36,12 @@ export default function HowItWorksSection() {
               </div>
 
               {/* Title */}
-              <h3 className="text-lg md:text-xl font-bold mb-4" style={{ color: "#0A0A0A" }}>
+              <h3 className="text-lg md:text-xl font-bold mb-4" style={{ color: "#F0EDE8" }}>
                 {step.title}
               </h3>
 
               {/* Description */}
-              <p className="text-sm md:text-base leading-relaxed" style={{ color: "rgba(10, 10, 10, 0.7)" }}>
+              <p className="text-sm md:text-base leading-relaxed" style={{ color: "rgba(240, 237, 232, 0.7)" }}>
                 {step.description}
               </p>
             </div>

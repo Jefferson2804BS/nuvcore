@@ -33,9 +33,9 @@ export default function ProofSection() {
   ];
 
   return (
-    <section className="py-20 md:py-32 px-4 md:px-6" style={{ backgroundColor: "#F5F0E8" }}>
+    <section className="py-20 md:py-32 px-4 md:px-6" style={{ backgroundColor: "#0A0A0A" }}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 md:mb-20" style={{ color: "#0A0A0A" }}>
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 md:mb-20" style={{ color: "#F0EDE8" }}>
           Projetos desenvolvidos
         </h2>
 
@@ -55,12 +55,12 @@ export default function ProofSection() {
               </div>
 
               {/* Title */}
-              <h3 className="text-lg md:text-xl font-bold mb-3" style={{ color: "#0A0A0A" }}>
+              <h3 className="text-lg md:text-xl font-bold mb-3" style={{ color: "#F0EDE8" }}>
                 {project.title}
               </h3>
 
               {/* Description */}
-              <p className="text-sm md:text-base leading-relaxed mb-6" style={{ color: "rgba(10, 10, 10, 0.7)" }}>
+              <p className="text-sm md:text-base leading-relaxed mb-6" style={{ color: "rgba(240, 237, 232, 0.7)" }}>
                 {project.description}
               </p>
 
