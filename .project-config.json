@@ -1,0 +1,41 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [
+    "db",
+    "server",
+    "user"
+  ],
+  "dev_command": "pnpm run dev",
+  "env_vars": {
+    "DATABASE_URL": "mysql://2CsnQ1nEWSU2X6b.root:I7Zn0qjpJG3Rs927BlNO@gateway04.us-east-1.prod.aws.tidbcloud.com:4000/g9wfxJ5VyEKEsr9ErzHzmc?ssl={\"rejectUnauthorized\":true}"
+  },
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663387028892/g9wfxJ5VyEKEsr9ErzHzmc",
+    "access_key_id": "ASIAZV3A2ECZD3YE5DWN",
+    "secret_access_key": "Wt1p37rO2K718LzzwbfyfISe8nXxBPDcMc38KzVa",
+    "session_token": "IQoJb3JpZ2luX2VjEIj//////////wEaCXVzLWVhc3QtMSJGMEQCIF/FA5HQsmy2TooVWQf0pHb/vHKxPkvqJAdnz2Sdo1I+AiBwJlAOuXlsRhYU+de92W3nDs5ddgtdvSbPy1fxV/lU1Sr2AwhQEAQaDDY2NTM4NjA5ODg2NiIM2TcvF5WKouo7SCYXKtMDHh+ZZMzFWefPwwLB0obnuRoDln9LxQBtnC6pjz/8Of33CWlZpSM40pUf3oT2UZ2wcQLzEgoo9+fQWiWVHfDApUojV+KKwYJ12Hmg9NHngjoYDRq8Uop14i4I4o4DstSpYJ4/oQZBLcNRQ+ZTi0HvzJHyl0nMopxBlysjW5LKa3judz7B23QybEF4JIZezK0JzHc6+QFf4JTGRwWfo6bQBibr2H/4LG3hgBpOgZ8HEODKUZFiq+1kgpc867sVLL/aOU7OT1t5AMK7CO1BAKV29R+NFoba2vaXNMYlZE8hpUPkvNpWxDX8ng0kUQA/cyXlsBVh68BHVCQycl73l2llXIVyK7/NicOwy07i9b2JfdzdeHwWVr/aYabwvs2R6rFtDHmzKTFx3SV+vnsdOZnQ8MCYuBF6lJau8uOkgGSNqqIYqI+c2acsJTZfhF72zbVS3c6q7vG3suUXv9sQsrDd2IUo8y1oFx2rFxrxtAgVbBz7iC+bzsNPqDZDsoCmS/dho6M6NHuglmT+13YJ9Rihhk5ChqSgYQyUoaVDj5pAJ5dXFnvJ4ncP33TRtqd/qsoMjXSdNyBqHiFXdEnJ7NSJTG0j/o9U8mqVi0PDTbsyTFdMveww/63M0AY6ngFc+qcf7jMY/eC4Hz7me2xE7jyh+I1e2/BWaBYcbJYxWEZNuyFdC/QwZ3RPqd36ihMH3biSUgwpuMhiNmI9XOR8ePL6Kv2Etn8USkyaX2CQfA4bOGN3kqQ17YAvQYINRxJUWUQa+/2qMJTAwMXNxaB+mv2oc5iGidm5JzJjdM5YWNfLR4wcp2lfFF9k4CLOFMZ+74YyS5cjX33l9q92cQ==",
+    "expiration": "2026-05-25T03:19:27.000Z"
+  },
+  "name": "nuvcore",
+  "path": "/home/ubuntu/nuvcore",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "KYLGq9B6dnaTZoixo4iEat",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "Wbgyq8HSzwSPwstJ7Pbq8m",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Nuvcore",
+    "OWNER_OPEN_ID": "B5tNauWXGHZCXkh3Y7Raio",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "2de81b9f-1bf4-478c-b5aa-272007d8a709",
+    "VITE_APP_ID": "g9wfxJ5VyEKEsr9ErzHzmc",
+    "VITE_APP_LOGO": "https://files.manuscdn.com/user_upload_by_module/web_dev_logo/310519663387028892/MAzehGXqlViothgu.png",
+    "VITE_APP_TITLE": "NUVCORE — Desenvolvimento Web Estratégico",
+    "VITE_FRONTEND_FORGE_API_KEY": "2JLhWnXmN2VziieFwpxirg",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-db-user",
+  "test_command": "pnpm test"
+}
