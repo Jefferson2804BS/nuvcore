@@ -59,9 +59,9 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="container relative z-10 pt-24 pb-16">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          <div className="max-w-3xl">
+      <div className="container relative z-10 py-16 lg:py-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="max-w-2xl">
           {/* Label */}
           <div className="flex items-center gap-3 mb-8 fade-up">
             <span className="nv-divider" />
@@ -130,19 +130,21 @@ export default function HeroSection() {
         </div>
 
           {/* Hero Illustration - Right side desktop, below mobile */}
-          <div className="relative flex justify-center lg:justify-end">
+          <div className="relative flex justify-center lg:justify-end items-center">
             <div
-              className="relative w-full max-w-md lg:max-w-none"
+              className="relative w-full max-w-sm lg:max-w-md"
               style={{
-                background: "radial-gradient(ellipse 60% 70% at 65% 50%, rgba(229,0,27,0.08) 0%, transparent 70%)",
+                background: "radial-gradient(ellipse 60% 70% at 65% 50%, rgba(229,0,27,0.12) 0%, transparent 70%)",
               }}
             >
               <img
                 src={HERO_ILLUSTRATION}
                 alt="NUVCORE Hero Illustration"
                 className="w-full h-auto object-contain"
+                loading="lazy"
                 style={{
-                  filter: "drop-shadow(0 0 40px rgba(229,0,27,0.15))",
+                  filter: "drop-shadow(0 0 50px rgba(229,0,27,0.2))",
+                  maxHeight: "500px",
                 }}
               />
             </div>
