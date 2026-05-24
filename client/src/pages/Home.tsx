@@ -45,7 +45,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#080808] text-[#F2EFE9]">
+    <div className="min-h-screen bg-[#080808] text-[#F2EFE9]" style={{ padding: "0", margin: "0" }}>
       {/* Navigation */}
       <header
         className={`fixed top-0 left-0 right-0 z-1000 transition-all duration-300 ${
@@ -114,7 +114,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <main>
+      <main style={{ padding: "0", margin: "0" }}>
         {/* Section 1: Hero */}
         <HeroSection />
 
