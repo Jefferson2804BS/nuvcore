@@ -31,8 +31,8 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ backgroundColor: "#080808" }}
+      className="relative flex items-center justify-center overflow-hidden"
+      style={{ backgroundColor: "#080808", minHeight: "auto", height: "auto" }}
     >
       {/* Watermark Logo */}
       <img
@@ -59,8 +59,8 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="container relative z-10 py-16 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="container relative z-10" style={{ padding: "80px 24px", maxWidth: "100%" }}>
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center justify-items-center">
           <div className="max-w-2xl">
           {/* Label */}
           <div className="flex items-center gap-3 mb-8 fade-up">
@@ -130,11 +130,12 @@ export default function HeroSection() {
         </div>
 
           {/* Hero Illustration - Right side desktop, below mobile */}
-          <div className="relative flex justify-center lg:justify-end items-center">
+          <div className="relative flex justify-center items-center w-full">
             <div
-              className="relative w-full max-w-sm lg:max-w-md"
+              className="relative w-full"
               style={{
                 background: "radial-gradient(ellipse 60% 70% at 65% 50%, rgba(229,0,27,0.12) 0%, transparent 70%)",
+                maxWidth: "900px",
               }}
             >
               <img
@@ -144,7 +145,7 @@ export default function HeroSection() {
                 loading="lazy"
                 style={{
                   filter: "drop-shadow(0 0 50px rgba(229,0,27,0.2))",
-                  maxHeight: "500px",
+                  maxWidth: "100%",
                 }}
               />
             </div>
@@ -152,17 +153,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <button
-        onClick={scrollToAbout}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-50 hover:opacity-80 transition-opacity"
-        aria-label="Rolar para baixo"
-      >
-        <span className="text-xs tracking-widest uppercase" style={{ color: "#F2F2F2", fontFamily: "'Inter', sans-serif" }}>
-          Scroll
-        </span>
-        <ChevronDown size={18} className="text-white animate-bounce" />
-      </button>
+
     </section>
   );
 }

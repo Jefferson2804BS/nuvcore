@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 const LOGO_URL = "/manus-storage/file_00000000e508720e82e3a56520af3e8e_1b924e00.png";
+const LOGO_ICON_URL = "/manus-storage/file_00000000e508720e82e3a56520af3e8e_febdde19.png";
 
 const navLinks = [
   { label: "Sobre", href: "#sobre" },
@@ -53,13 +54,30 @@ export default function Navbar() {
             href="#"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
             className="flex items-center gap-2 group"
+            style={{ display: "flex", alignItems: "center", gap: "10px" }}
           >
             <img
-              src={LOGO_URL}
-              alt="NUVCORE Logo"
-              className="h-11 object-contain"
-              style={{ maxWidth: "200px" }}
+              src={LOGO_ICON_URL}
+              alt="NUVCORE"
+              style={{
+                height: "32px",
+                width: "auto",
+                display: "inline-block",
+                verticalAlign: "middle",
+              }}
             />
+            <span
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: "700",
+                fontSize: "20px",
+                color: "#F2EFE9",
+                letterSpacing: "0.06em",
+                verticalAlign: "middle",
+              }}
+            >
+              NUVCORE
+            </span>
           </a>
 
           {/* Desktop Nav */}
@@ -85,12 +103,14 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <button
-              onClick={() => handleNavClick("#contato")}
+            <a
+              href="https://wa.me/5511912830541"
+              target="_blank"
+              rel="noopener noreferrer"
               className="nv-btn-primary text-sm"
             >
-              Solicitar Diagnóstico
-            </button>
+              Vamos Conversar
+            </a>
           </div>
 
           {/* Mobile Menu Toggle */}
