@@ -114,5 +114,4 @@
 - [x] Implementar animações de fade-in com IntersectionObserver
 - [x] Testar responsividade em mobile/tablet/desktop
 - [x] Verificar links de WhatsApp e navegação
-- [x] Alterar todas as seções para cores escuras (#0A0A0A)
 - [ ] Salvar checkpoint final
