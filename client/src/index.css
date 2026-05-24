@@ -167,11 +167,19 @@
     padding-bottom: 6rem;
   }
 
-  /* Hero Section - Remove top spacing */
-  .hero, section.hero, #hero, [class*="hero"] {
-    padding-top: 0 !important;
+  /* Hero Section - Remove all spacing */
+  #hero, .hero, .hero-section, section:first-of-type {
     margin-top: 0 !important;
-    min-height: auto !important;
+    padding-top: 0 !important;
+    height: auto !important;
+    min-height: unset !important;
+  }
+  
+  .hero, section.hero, #hero, [class*="hero"] {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    height: auto !important;
+    min-height: unset !important;
   }
 
   /* Remove spacing from wrappers between header and hero */

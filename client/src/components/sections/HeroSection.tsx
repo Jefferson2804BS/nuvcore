@@ -31,8 +31,8 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex items-center justify-center overflow-hidden pt-0 mt-0"
-      style={{ backgroundColor: "#080808", height: "auto" }}
+      className="relative flex items-center justify-center overflow-hidden"
+      style={{ backgroundColor: "#080808", marginTop: "0", paddingTop: "0" }}
     >
       {/* Watermark Logo */}
       <img
