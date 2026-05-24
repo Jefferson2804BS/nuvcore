@@ -1,37 +1,28 @@
 /*
  * NUVCORE — Home Page
  * Design: "Precision Dark" — Dark SaaS Modernism
- * All sections: Hero, About, Services, Process, Portfolio, Why, CTA, Contact
+ * Structure: 9 Strategic Sections (Hero → Tension → Solution → How → Services → Proof → Authority → Final CTA → Footer)
  */
 
 import { useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
-import ProblemSection from "@/components/sections/ProblemSection";
+import TensionSection from "@/components/sections/TensionSection";
 import SolutionSection from "@/components/sections/SolutionSection";
-import FrameworkSection from "@/components/sections/FrameworkSection";
-import AboutSection from "@/components/sections/AboutSection";
+import HowItWorksSection from "@/components/sections/HowItWorksSection";
 import ServicesSection from "@/components/sections/ServicesSection";
-import ProcessSection from "@/components/sections/ProcessSection";
-import FounderSection from "@/components/sections/FounderSection";
-import PortfolioSection from "@/components/sections/PortfolioSection";
+import ProofSection from "@/components/sections/ProofSection";
 import AuthoritySection from "@/components/sections/AuthoritySection";
-import WhySection from "@/components/sections/WhySection";
-import CTASection from "@/components/sections/CTASection";
-import ContactSection from "@/components/sections/ContactSection";
-import ProjectsSection from "@/components/sections/ProjectsSection";
-import DiferenciaisSection from "@/components/sections/DiferenciaisSection";
+import FinalCTASection from "@/components/sections/FinalCTASection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  // The userAuth hooks provides authentication state
-  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
   const { user, loading, error, isAuthenticated, logout } = useAuth();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      const elements = document.querySelectorAll(".fade-up, .fade-left, .fade-right, .scale-in");
+      const elements = document.querySelectorAll(".fade-up, .fade-left, .fade-right, .scale-in, .section-fade");
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -49,19 +40,17 @@ export default function Home() {
   }, []);
 
   return (
-    <div
-      className="min-h-screen"
-      style={{ backgroundColor: "#0F0F12" }}
-    >
+    <div className="min-h-screen" style={{ backgroundColor: "#0A0A0A" }}>
       <Navbar />
       <main>
         <HeroSection />
-        <AboutSection />
+        <TensionSection />
+        <SolutionSection />
+        <HowItWorksSection />
         <ServicesSection />
-        <ProjectsSection />
-        <DiferenciaisSection />
-        <CTASection />
-        <ContactSection />
+        <ProofSection />
+        <AuthoritySection />
+        <FinalCTASection />
       </main>
       <Footer />
     </div>
