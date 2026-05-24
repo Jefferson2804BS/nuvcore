@@ -7,7 +7,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663387028892/g9wfxJ5VyEKEsr9ErzHzmc/IMG_20260314_134008_784f7202.png";
+const LOGO_URL = "/manus-storage/file_00000000e508720e82e3a56520af3e8e_1b924e00.png";
 
 const navLinks = [
   { label: "Sobre", href: "#sobre" },
