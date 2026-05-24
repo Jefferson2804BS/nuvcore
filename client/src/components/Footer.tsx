@@ -6,7 +6,7 @@
 
 import { Mail, Instagram } from "lucide-react";
 
-const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663387028892/RLWfTMXfVFnGSRxy.png";
+const LOGO_URL = "/manus-storage/IMG_20260314_134008_21a7939f.png";
 
 const navLinks = [
   { label: "Sobre", href: "#sobre" },
@@ -30,22 +30,15 @@ export default function Footer() {
         <div className="grid lg:grid-cols-3 gap-10 items-start mb-10">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
             <img
               src={LOGO_URL}
               alt="NUVCORE Logo"
-              className="w-10 h-10 object-contain"
+              className="h-7 object-contain mb-6"
+              style={{ maxWidth: "280px" }}
             />
-              <span
-                className="text-white font-bold text-lg tracking-tight"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-              >
-                NUVCORE
-              </span>
-            </div>
             <p
               className="text-sm leading-relaxed"
-              style={{ color: "rgba(242,242,242,0.45)", fontFamily: "'Inter', sans-serif", maxWidth: "260px" }}
+              style={{ color: "rgba(242,242,242,0.45)", fontFamily: "'DM Sans', sans-serif", maxWidth: "260px" }}
             >
               Desenvolvimento web estratégico para startups e pequenos negócios que constroem o futuro.
             </p>
