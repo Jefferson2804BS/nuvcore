@@ -130,12 +130,14 @@ export default function HeroSection() {
         </div>
 
           {/* Hero Illustration - Right side desktop, below mobile */}
-          <div className="relative flex justify-center items-center w-full">
+          <div className="relative flex justify-center items-center w-full" style={{ marginTop: "5px", paddingTop: "0" }}>
             <div
               className="relative w-full"
               style={{
                 background: "radial-gradient(ellipse 60% 70% at 65% 50%, rgba(229,0,27,0.12) 0%, transparent 70%)",
                 maxWidth: "900px",
+                marginTop: "0",
+                paddingTop: "0",
               }}
             >
               <img
@@ -146,6 +148,8 @@ export default function HeroSection() {
                 style={{
                   filter: "drop-shadow(0 0 50px rgba(229,0,27,0.2))",
                   maxWidth: "100%",
+                  marginTop: "0",
+                  paddingTop: "0",
                 }}
               />
             </div>

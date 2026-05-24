@@ -54,7 +54,8 @@ export default function Home() {
             : 'bg-transparent border-b border-transparent'
         }`}
       >
-        <nav className="flex items-center justify-between px-8 py-6 max-w-7xl mx-auto w-full">
+        <nav className="flex items-center justify-between px-8 py-3 max-w-7xl mx-auto w-full" style={{marginBottom: "0", paddingBottom: "0"}}>
+
           <a href="#" className="text-2xl font-bold text-[#F2EFE9]">
             NUVCORE
           </a>
