@@ -59,18 +59,18 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="container relative z-10" style={{ padding: "80px 24px", maxWidth: "100%" }}>
+      <div className="container relative z-10" style={{ padding: "40px 24px", maxWidth: "100%" }}>
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center justify-items-center">
           <div className="max-w-2xl">
           {/* Label */}
-          <div className="flex items-center gap-3 mb-8 fade-up">
+          <div className="flex items-center gap-3 mb-4 fade-up">
             <span className="nv-divider" />
             <span className="nv-label">Desenvolvimento Web & Design</span>
           </div>
 
           {/* Headline */}
           <h1
-            className="text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-6 fade-up delay-100"
+            className="text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-3 fade-up delay-100"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             Eu construo{" "}
@@ -80,7 +80,7 @@ export default function HeroSection() {
 
           {/* Subheadline */}
           <p
-            className="text-lg lg:text-xl leading-relaxed mb-10 fade-up delay-200"
+            className="text-lg lg:text-xl leading-relaxed mb-6 fade-up delay-200"
             style={{
               color: "rgba(242,242,242,0.65)",
               fontFamily: "'Inter', sans-serif",
@@ -91,7 +91,7 @@ export default function HeroSection() {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap gap-4 fade-up delay-300">
+          <div className="flex flex-wrap gap-4 mb-6 fade-up delay-300">
             <button onClick={scrollToContact} className="nv-btn-primary text-base">
               Solicitar Diagnóstico Gratuito
               <ArrowRight size={18} />
@@ -105,7 +105,7 @@ export default function HeroSection() {
           </div>
 
           {/* Stats */}
-          <div className="flex flex-wrap gap-8 mt-16 fade-up delay-400">
+          <div className="flex flex-wrap gap-8 mt-8 fade-up delay-400">
             {[
               { value: "100%", label: "Foco em resultados" },
               { value: "Estratégia", label: "Antes de código" },
