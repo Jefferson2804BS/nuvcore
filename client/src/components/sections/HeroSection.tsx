@@ -5,11 +5,21 @@
  */
 
 import { ArrowRight, ChevronDown } from "lucide-react";
+import { useState, useEffect } from "react";
 
-const HERO_BG = "https://private-us-east-1.manuscdn.com/sessionFile/3ZwnxAvCGCsvjvmdSPvTyk/sandbox/qRCAK89su30SRUWxSWtIm7-img-1_1772158112000_na1fn_bnV2Y29yZS1oZXJvLWJn.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvM1p3bnhBdkNHQ3N2anZtZFNQdlR5ay9zYW5kYm94L3FSQ0FLODlzdTMwU1JVV3hTV3RJbTctaW1nLTFfMTc3MjE1ODExMjAwMF9uYTFmbl9iblYyWTI5eVpTMW9aWEp2TFdKbi5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=NMupaura2BXffR-xOSmhzso93KY9t~XKVf7bntd5ghTuL~MML-ajzO0DSAD4gFuNJ5XMWYhvLBkzRlVwrOkjeDdyJ8ywt8GIZ67eszZuyHL1Qb~SHPYeGFhQBA2OlpHgxrX2JbDj3t~wa3vspZiJIvqBPRq6PDUyHhu0Ty6tWuGWP-IArJQ8a5qLUwAVa6uF7T0EaHuFTKtBdkzbgigCrfhZfAr9IYNmjv3UE7ZIjVwK-wPRUIVgwX7s1SAmhPkKXenlud927~pNb26b02MBSJ1fcQMATrwKwKfKn2vVgn1uL-KL59U~9Nr41sreScfcEQksN7CdzolFssLxm3Amxg__";
+const HERO_ILLUSTRATION = "/manus-storage/file_0000000075d871f5969fb0e76d8395dc_c4818c85.png";
 const LOGO_URL = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663387028892/RLWfTMXfVFnGSRxy.png";
 
 export default function HeroSection() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const scrollToContact = () => {
     document.querySelector("#contato")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -22,7 +32,7 @@ export default function HeroSection() {
     <section
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ backgroundColor: "#0F0F12" }}
+      style={{ backgroundColor: "#080808" }}
     >
       {/* Watermark Logo */}
       <img
@@ -32,16 +42,7 @@ export default function HeroSection() {
         style={{ bottom: "10%", right: "-5%" }}
       />
 
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${HERO_BG})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center right",
-          opacity: 0.35,
-        }}
-      />
+      {/* Background Image - removed */}
 
       {/* Gradient overlay */}
       <div
@@ -59,7 +60,8 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="container relative z-10 pt-24 pb-16">
-        <div className="max-w-3xl">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          <div className="max-w-3xl">
           {/* Label */}
           <div className="flex items-center gap-3 mb-8 fade-up">
             <span className="nv-divider" />
@@ -72,7 +74,7 @@ export default function HeroSection() {
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             Eu construo{" "}
-            <span style={{ color: "#C41B2C" }}>estruturas digitais</span>
+            <span style={{ color: "#E5001B" }}>estruturas digitais</span>
             {" "}que posicionam e crescem.
           </h1>
 
@@ -124,6 +126,26 @@ export default function HeroSection() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+          {/* Hero Illustration - Right side desktop, below mobile */}
+          <div className="relative flex justify-center lg:justify-end">
+            <div
+              className="relative w-full max-w-md lg:max-w-none"
+              style={{
+                background: "radial-gradient(ellipse 60% 70% at 65% 50%, rgba(229,0,27,0.08) 0%, transparent 70%)",
+              }}
+            >
+              <img
+                src={HERO_ILLUSTRATION}
+                alt="NUVCORE Hero Illustration"
+                className="w-full h-auto object-contain"
+                style={{
+                  filter: "drop-shadow(0 0 40px rgba(229,0,27,0.15))",
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
