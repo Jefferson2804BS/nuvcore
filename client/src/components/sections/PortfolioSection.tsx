@@ -48,7 +48,7 @@ const projects = [
 
 export default function PortfolioSection() {
   return (
-    <section className="bg-[#080808] py-[120px] px-5 md:px-8 lg:px-8">
+    <section id="portfolio" className="bg-[#080808] py-[120px] px-5 md:px-8 lg:px-8">
       <div className="max-w-[1200px] mx-auto">
         {/* Header */}
         <div className="mb-16 text-center">
