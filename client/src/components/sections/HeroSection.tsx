@@ -70,7 +70,7 @@ export default function HeroSection() {
 
           {/* Headline */}
           <h1
-            className="text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-3 fade-up delay-100"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-3 fade-up delay-100"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             Eu construo{" "}
@@ -80,7 +80,7 @@ export default function HeroSection() {
 
           {/* Subheadline */}
           <p
-            className="text-lg lg:text-xl leading-relaxed mb-6 fade-up delay-200"
+            className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mb-6 fade-up delay-200"
             style={{
               color: "rgba(242,242,242,0.65)",
               fontFamily: "'Inter', sans-serif",
