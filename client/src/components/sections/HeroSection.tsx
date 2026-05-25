@@ -1,10 +1,10 @@
 /*
  * NUVCORE — Hero Section
- * Design: "Precision Dark" — asymmetric layout, strong typography, animated visual
- * Colors: Tech Black bg | Soft White text | Red CTA | Blue accent
+ * Design: "Precision Dark" — fullscreen background image, centered content overlay
+ * Colors: Tech Black overlay | Soft White text | Red CTA
  */
 
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const HERO_ILLUSTRATION = "/manus-storage/file_0000000075d871f5969fb0e76d8395dc_c4818c85.png";
@@ -31,133 +31,115 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex items-center justify-center overflow-hidden"
-      style={{ backgroundColor: "#080808", marginTop: "0", paddingTop: "0" }}
+      className="relative w-full flex items-center justify-center overflow-hidden"
+      style={{
+        minHeight: "100vh",
+        height: "100vh",
+        backgroundImage: `url('${HERO_ILLUSTRATION}')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        backgroundRepeat: "no-repeat",
+        marginTop: "0",
+        paddingTop: "0",
+      }}
     >
       {/* Watermark Logo */}
       <img
         src={LOGO_URL}
         alt=""
-        className="nv-watermark nv-watermark-lg"
-        style={{ bottom: "10%", right: "-5%" }}
+        className="nv-watermark nv-watermark-lg absolute"
+        style={{ bottom: "10%", right: "-5%", zIndex: 1 }}
       />
 
-      {/* Background Image - removed */}
-
-      {/* Gradient overlay */}
+      {/* Dark Overlay - Left to right gradient for text readability */}
       <div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-5"
         style={{
-          background: "linear-gradient(to right, #0F0F12 45%, rgba(15,15,18,0.7) 70%, rgba(15,15,18,0.3) 100%)",
-        }}
-      />
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background: "linear-gradient(to top, #0F0F12 0%, transparent 40%)",
+          background: "linear-gradient(to right, rgba(15,15,18,0.95) 0%, rgba(15,15,18,0.85) 40%, rgba(15,15,18,0.5) 70%, rgba(15,15,18,0.2) 100%)",
         }}
       />
 
-      {/* Content */}
-      <div className="container relative z-10" style={{ padding: "24px 24px", maxWidth: "100%", marginTop: "0", paddingTop: "0" }}>
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center justify-items-center">
+      {/* Top to bottom gradient overlay */}
+      <div
+        className="absolute inset-0 z-5"
+        style={{
+          background: "linear-gradient(to bottom, rgba(15,15,18,0.3) 0%, transparent 50%, rgba(15,15,18,0.5) 100%)",
+        }}
+      />
+
+      {/* Content Container - Centered */}
+      <div className="container relative z-10 flex items-center justify-center w-full h-full" style={{ padding: "40px 24px", maxWidth: "100%" }}>
+        <div className="w-full max-w-6xl">
           <div className="max-w-2xl">
-          {/* Label */}
-          <div className="flex items-center gap-3 mb-4 fade-up">
-            <span className="nv-divider" />
-            <span className="nv-label">Desenvolvimento Web & Design</span>
-          </div>
+            {/* Label */}
+            <div className="flex items-center gap-3 mb-4 fade-up">
+              <span className="nv-divider" />
+              <span className="nv-label">Desenvolvimento Web & Design</span>
+            </div>
 
-          {/* Headline */}
-          <h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-3 fade-up delay-100"
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-          >
-            Eu construo{" "}
-            <span style={{ color: "#E5001B" }}>estruturas digitais</span>
-            {" "}que posicionam e crescem.
-          </h1>
-
-          {/* Subheadline */}
-          <p
-            className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mb-6 fade-up delay-200"
-            style={{
-              color: "rgba(242,242,242,0.65)",
-              fontFamily: "'Inter', sans-serif",
-              maxWidth: "560px",
-            }}
-          >
-            Não crio apenas sites bonitos. Desenvolvo presença digital estratégica para startups e pequenos negócios que querem crescer com consistência.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-wrap gap-4 mb-6 fade-up delay-300">
-            <button onClick={scrollToContact} className="nv-btn-primary text-base">
-              Solicitar Diagnóstico Gratuito
-              <ArrowRight size={18} />
-            </button>
-            <button
-              onClick={() => document.querySelector("#servicos")?.scrollIntoView({ behavior: "smooth" })}
-              className="nv-btn-outline text-base"
+            {/* Headline */}
+            <h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-3 fade-up delay-100"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              Ver Serviços
-            </button>
-          </div>
+              Eu construo{" "}
+              <span style={{ color: "#E5001B" }}>estruturas digitais</span>
+              {" "}que posicionam e crescem.
+            </h1>
 
-          {/* Stats */}
-          <div className="flex flex-wrap gap-8 mt-8 fade-up delay-400">
-            {[
-              { value: "100%", label: "Foco em resultados" },
-              { value: "Estratégia", label: "Antes de código" },
-              { value: "Startups", label: "& Pequenos negócios" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <div
-                  className="text-2xl font-bold text-white mb-1"
-                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                >
-                  {stat.value}
-                </div>
-                <div
-                  className="text-sm"
-                  style={{ color: "rgba(242,242,242,0.45)", fontFamily: "'Inter', sans-serif" }}
-                >
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-          {/* Hero Illustration - Right side desktop, below mobile */}
-          <div className="relative flex justify-center items-center w-full" style={{ marginTop: "5px", paddingTop: "0" }}>
-            <div
-              className="relative w-full"
+            {/* Subheadline */}
+            <p
+              className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mb-6 fade-up delay-200"
               style={{
-                background: "radial-gradient(ellipse 60% 70% at 65% 50%, rgba(229,0,27,0.12) 0%, transparent 70%)",
-                maxWidth: "900px",
-                marginTop: "0",
-                paddingTop: "0",
+                color: "rgba(242,242,242,0.85)",
+                fontFamily: "'Inter', sans-serif",
+                maxWidth: "560px",
               }}
             >
-              <img
-                src={HERO_ILLUSTRATION}
-                alt="NUVCORE Hero Illustration"
-                className="w-full h-auto object-contain"
-                loading="lazy"
-                style={{
-                  filter: "drop-shadow(0 0 50px rgba(229,0,27,0.2))",
-                  maxWidth: "100%",
-                  marginTop: "0",
-                  paddingTop: "0",
-                }}
-              />
+              Não crio apenas sites bonitos. Desenvolvo presença digital estratégica para startups e pequenos negócios que querem crescer com consistência.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4 mb-6 fade-up delay-300">
+              <button onClick={scrollToContact} className="nv-btn-primary text-base">
+                Solicitar Diagnóstico Gratuito
+                <ArrowRight size={18} />
+              </button>
+              <button
+                onClick={() => document.querySelector("#servicos")?.scrollIntoView({ behavior: "smooth" })}
+                className="nv-btn-outline text-base"
+              >
+                Ver Serviços
+              </button>
+            </div>
+
+            {/* Stats */}
+            <div className="flex flex-wrap gap-8 mt-8 fade-up delay-400">
+              {[
+                { value: "100%", label: "Foco em resultados" },
+                { value: "Estratégia", label: "Antes de código" },
+                { value: "Startups", label: "& Pequenos negócios" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <div
+                    className="text-2xl font-bold text-white mb-1"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div
+                    className="text-sm"
+                    style={{ color: "rgba(242,242,242,0.65)", fontFamily: "'Inter', sans-serif" }}
+                  >
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
-
-
     </section>
   );
 }
