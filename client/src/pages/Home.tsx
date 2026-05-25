@@ -61,13 +61,12 @@ export default function Home() {
       >
         <nav className="flex items-center justify-between px-8 py-3 max-w-7xl mx-auto w-full" style={{marginBottom: "0", paddingBottom: "0"}}>
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3">
+          <a href="#">
             <img
               src="/manus-storage/IMG_20260314_134008_21a7939f.png"
               alt="NUVCORE Logo"
               className="h-8 object-contain"
             />
-            <span className="text-2xl font-bold text-[#F2EFE9]">NUVCORE</span>
           </a>
 
           {/* Desktop Menu */}
