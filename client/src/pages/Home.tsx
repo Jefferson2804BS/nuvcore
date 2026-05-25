@@ -101,17 +101,14 @@ export default function Home() {
               </a>
             </li>
           </ul>
-          <button
-            onClick={() =>
-              window.open(
-                'https://wa.me/5585987654321?text=Quero%20um%20diagnóstico%20gratuito',
-                '_blank'
-              )
-            }
-            className="hidden md:block bg-transparent border border-[#E5001B] text-[#E5001B] px-6 py-3 rounded text-sm font-medium hover:bg-[#E5001B] hover:text-[#080808] transition-all"
+          <a
+            href="https://wa.me/5511912830541?text=Quero%20um%20diagnóstico%20gratuito"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:block bg-transparent border border-[#E5001B] text-[#ffffff] px-6 py-3 rounded text-sm font-medium hover:bg-[#E5001B] hover:text-[#080808] transition-all"
           >
             Diagnóstico
-          </button>
+          </a>
         </nav>
       </header>
 

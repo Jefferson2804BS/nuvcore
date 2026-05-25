@@ -37,7 +37,7 @@ export default function HeroSection() {
         height: "100vh",
         backgroundImage: `url('${HERO_ILLUSTRATION}')`,
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "center top",
         backgroundAttachment: "fixed",
         backgroundRepeat: "no-repeat",
         marginTop: "0",
