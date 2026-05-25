@@ -17,7 +17,7 @@ export default function FinalCTASection() {
             <button
               onClick={() =>
                 window.open(
-                  'https://wa.me/5585987654321?text=Quero%20um%20diagnóstico%20gratuito',
+                  'https://wa.me/5511912830541?text=Olá!%20Vi%20o%20site%20da%20NUVCORE%20e%20quero%20entender%20como%20ter%20um%20site%20que%20realmente%20converte%20para%20o%20meu%20negócio.',
                   '_blank'
                 )
               }

@@ -115,7 +115,7 @@ export default function Home() {
 
           {/* Desktop Diagnóstico Button */}
           <a
-            href="https://wa.me/5511912830541?text=Quero%20um%20diagnóstico%20gratuito"
+            href="https://wa.me/5511912830541?text=Olá!%20Vi%20o%20site%20da%20NUVCORE%20e%20quero%20entender%20como%20ter%20um%20site%20que%20realmente%20converte%20para%20o%20meu%20negócio."
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:block bg-transparent border border-[#E5001B] text-[#ffffff] px-6 py-3 rounded text-sm font-medium hover:bg-[#E5001B] hover:text-[#080808] transition-all"
@@ -174,7 +174,7 @@ export default function Home() {
               Contato
             </a>
             <a
-              href="https://wa.me/5511912830541?text=Quero%20um%20diagnóstico%20gratuito"
+              href="https://wa.me/5511912830541?text=Olá!%20Vi%20o%20site%20da%20NUVCORE%20e%20quero%20entender%20como%20ter%20um%20site%20que%20realmente%20converte%20para%20o%20meu%20negócio."
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleNavClick}
@@ -238,7 +238,7 @@ export default function Home() {
 
       {/* Floating WhatsApp Button */}
       <a
-        href="https://wa.me/5585987654321?text=Quero%20um%20diagnóstico%20gratuito"
+        href="https://wa.me/5511912830541?text=Olá!%20Vi%20o%20site%20da%20NUVCORE%20e%20quero%20entender%20como%20ter%20um%20site%20que%20realmente%20converte%20para%20o%20meu%20negócio."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-8 right-8 w-14 h-14 bg-[#E5001B] rounded-full flex items-center justify-center z-999 hover:scale-110 transition-transform shadow-lg hover:shadow-xl"

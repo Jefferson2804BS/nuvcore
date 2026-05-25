@@ -104,7 +104,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <a
-              href="https://wa.me/5511912830541"
+              href="https://wa.me/5511912830541?text=Olá!%20Vi%20o%20site%20da%20NUVCORE%20e%20quero%20entender%20como%20ter%20um%20site%20que%20realmente%20converte%20para%20o%20meu%20negócio."
               target="_blank"
               rel="noopener noreferrer"
               className="nv-btn-primary text-sm font-bold px-6 py-2.5 rounded-lg"
@@ -153,7 +153,7 @@ export default function Navbar() {
                 </button>
               ))}
               <a
-                href="https://wa.me/5511912830541"
+                href="https://wa.me/5511912830541?text=Olá!%20Vi%20o%20site%20da%20NUVCORE%20e%20quero%20entender%20como%20ter%20um%20site%20que%20realmente%20converte%20para%20o%20meu%20negócio."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="nv-btn-primary mt-3 justify-center text-center block w-full"
