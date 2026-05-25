@@ -110,7 +110,7 @@ export default function PortfolioSection() {
                 '_blank'
               )
             }
-            className="bg-[#E5001B] text-[#080808] px-8 py-3 rounded font-bold hover:bg-[#BF0016] transition-all"
+            className="bg-[#E5001B] text-[#080808] px-8 py-3 rounded font-bold hover:bg-[#BF0016] transition-all" style={{color: '#ffffff'}}
           >
             Quero meu diagnóstico gratuito →
           </button>
