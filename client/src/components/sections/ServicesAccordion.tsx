@@ -52,7 +52,12 @@ const services = [
 ];
 
 export default function ServicesAccordion() {
-  const [activeId, setActiveId] = useState(1);
+  const [activeId, setActiveId] = useState<number | null>(1);
+
+  const toggleAccordion = (id: number) => {
+    // Se clicar no item aberto, fecha; se clicar em outro, abre
+    setActiveId(activeId === id ? null : id);
+  };
 
   return (
     <section id="services" className="bg-[#080808] py-24 px-8">
@@ -70,7 +75,7 @@ export default function ServicesAccordion() {
               }`}
             >
               <button
-                onClick={() => setActiveId(service.id)}
+                onClick={() => toggleAccordion(service.id)}
                 className="w-full px-8 py-6 flex justify-between items-center hover:bg-[#101010] transition-colors"
               >
                 <h3 className="text-2xl font-bold text-[#F2EFE9] text-left font-space-grotesk">
