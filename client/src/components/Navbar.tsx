@@ -107,9 +107,16 @@ export default function Navbar() {
               href="https://wa.me/5511912830541"
               target="_blank"
               rel="noopener noreferrer"
-              className="nv-btn-primary text-sm"
+              className="nv-btn-primary text-sm font-bold px-6 py-2.5 rounded-lg"
+              style={{
+                backgroundColor: "#E5001B",
+                color: "#F2EFE9",
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: "700",
+                border: "2px solid #E5001B",
+              }}
             >
-              Vamos Conversar
+              Solicitar Diagnóstico
             </a>
           </div>
 
@@ -145,12 +152,21 @@ export default function Navbar() {
                   {link.label}
                 </button>
               ))}
-              <button
-                onClick={() => handleNavClick("#contato")}
-                className="nv-btn-primary mt-3 justify-center"
+              <a
+                href="https://wa.me/5511912830541"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nv-btn-primary mt-3 justify-center text-center block w-full"
+                style={{
+                  backgroundColor: "#E5001B",
+                  color: "#F2EFE9",
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontWeight: "700",
+                  border: "2px solid #E5001B",
+                }}
               >
                 Solicitar Diagnóstico
-              </button>
+              </a>
             </nav>
           </div>
         )}

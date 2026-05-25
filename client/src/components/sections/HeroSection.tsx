@@ -52,19 +52,19 @@ export default function HeroSection() {
         style={{ bottom: "10%", right: "-5%", zIndex: 1 }}
       />
 
-      {/* Dark Overlay - Left to right gradient for text readability */}
+      {/* Minimal Dark Overlay - Only on left side for text readability */}
       <div
         className="absolute inset-0 z-5"
         style={{
-          background: "linear-gradient(to right, rgba(15,15,18,0.95) 0%, rgba(15,15,18,0.85) 40%, rgba(15,15,18,0.5) 70%, rgba(15,15,18,0.2) 100%)",
+          background: "linear-gradient(to right, rgba(15,15,18,0.7) 0%, rgba(15,15,18,0.4) 35%, transparent 60%)",
         }}
       />
 
-      {/* Top to bottom gradient overlay */}
+      {/* Subtle bottom gradient overlay */}
       <div
         className="absolute inset-0 z-5"
         style={{
-          background: "linear-gradient(to bottom, rgba(15,15,18,0.3) 0%, transparent 50%, rgba(15,15,18,0.5) 100%)",
+          background: "linear-gradient(to bottom, transparent 0%, transparent 70%, rgba(15,15,18,0.3) 100%)",
         }}
       />
 
@@ -102,10 +102,25 @@ export default function HeroSection() {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 mb-6 fade-up delay-300">
-              <button onClick={scrollToContact} className="nv-btn-primary text-base">
+              <a
+                href="https://wa.me/5511912830541"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nv-btn-primary text-base inline-flex items-center gap-2"
+                style={{
+                  backgroundColor: "#E5001B",
+                  color: "#F2EFE9",
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontWeight: "700",
+                  border: "2px solid #E5001B",
+                  padding: "12px 24px",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                }}
+              >
                 Solicitar Diagnóstico Gratuito
                 <ArrowRight size={18} />
-              </button>
+              </a>
               <button
                 onClick={() => document.querySelector("#servicos")?.scrollIntoView({ behavior: "smooth" })}
                 className="nv-btn-outline text-base"
