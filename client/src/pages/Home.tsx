@@ -7,6 +7,7 @@ import HowItWorksSection from '@/components/sections/HowItWorksSection';
 import PortfolioSection from '@/components/sections/PortfolioSection';
 import MetricsSection from '@/components/sections/MetricsSection';
 import FinalCTASection from '@/components/sections/FinalCTASection';
+import PricingSection from '@/components/sections/PricingSection';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -231,9 +232,12 @@ export default function Home() {
 
         {/* Section 8: Final CTA */}
         <FinalCTASection />
+
+        {/* Section 9: Pricing */}
+        <PricingSection />
       </main>
 
-      {/* Section 9: Footer */}
+      {/* Section 10: Footer */}
       <Footer />
 
       {/* Floating WhatsApp Button */}
