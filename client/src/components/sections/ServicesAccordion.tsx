@@ -7,8 +7,8 @@ const services = [
     description:
       'Eu desenvolvo sites institucionais e plataformas digitais com foco em performance, posicionamento e conversão. Cada linha de código tem um propósito.',
     deliverables: [
-      'React & Next.js',
-      'Performance otimizada',
+      'HTML, CSS & JavaScript',
+      'Código limpo e otimizado',
       'SEO técnico',
       'Responsivo',
     ],

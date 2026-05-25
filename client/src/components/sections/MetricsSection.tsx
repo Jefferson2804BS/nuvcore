@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
 
 const metrics = [
-  { label: 'Projetos Entregues', value: 150, suffix: '+' },
-  { label: 'Clientes Satisfeitos', value: 80, suffix: '+' },
-  { label: 'Entrega Média', value: 7, suffix: ' dias' },
-  { label: 'Taxa de Satisfação', value: 98, suffix: '%' },
+  { label: 'PROJETOS ENTREGUES', value: 40, suffix: '+' },
+  { label: 'CLIENTES SATISFEITOS', value: 20, suffix: '+' },
+  { label: 'ENTREGA MÉDIA', value: 7, suffix: ' dias' },
+  { label: 'TAXA DE SATISFAÇÃO', value: 98, suffix: '%' },
 ];
 
 export default function MetricsSection() {
