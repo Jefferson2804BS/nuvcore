@@ -11,7 +11,12 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
+
+  const handleNavClick = () => {
+    setMobileMenuOpen(false);
+  };
 
   useEffect(() => {
     // Navbar scroll effect
@@ -55,10 +60,12 @@ export default function Home() {
         }`}
       >
         <nav className="flex items-center justify-between px-8 py-3 max-w-7xl mx-auto w-full" style={{marginBottom: "0", paddingBottom: "0"}}>
-
+          {/* Logo */}
           <a href="#" className="text-2xl font-bold text-[#F2EFE9]">
             NUVCORE
           </a>
+
+          {/* Desktop Menu */}
           <ul className="hidden md:flex gap-12 list-none">
             <li>
               <a
@@ -101,6 +108,8 @@ export default function Home() {
               </a>
             </li>
           </ul>
+
+          {/* Desktop Diagnóstico Button */}
           <a
             href="https://wa.me/5511912830541?text=Quero%20um%20diagnóstico%20gratuito"
             target="_blank"
@@ -109,7 +118,68 @@ export default function Home() {
           >
             Diagnóstico
           </a>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden flex flex-col gap-1.5 z-50"
+            aria-label="Toggle menu"
+          >
+            <span className={`w-6 h-0.5 bg-[#E5001B] transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+            <span className={`w-6 h-0.5 bg-[#E5001B] transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+            <span className={`w-6 h-0.5 bg-[#E5001B] transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          </button>
         </nav>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-[#101010] border-t border-[#1E1E1E] px-8 py-6 flex flex-col gap-6">
+            <a
+              href="#about"
+              onClick={handleNavClick}
+              className="text-sm text-[#9A9490] hover:text-[#E5001B] transition-colors"
+            >
+              Sobre
+            </a>
+            <a
+              href="#services"
+              onClick={handleNavClick}
+              className="text-sm text-[#9A9490] hover:text-[#E5001B] transition-colors"
+            >
+              Serviços
+            </a>
+            <a
+              href="#how-it-works"
+              onClick={handleNavClick}
+              className="text-sm text-[#9A9490] hover:text-[#E5001B] transition-colors"
+            >
+              Processo
+            </a>
+            <a
+              href="#portfolio"
+              onClick={handleNavClick}
+              className="text-sm text-[#9A9490] hover:text-[#E5001B] transition-colors"
+            >
+              Portfólio
+            </a>
+            <a
+              href="#contact"
+              onClick={handleNavClick}
+              className="text-sm text-[#9A9490] hover:text-[#E5001B] transition-colors"
+            >
+              Contato
+            </a>
+            <a
+              href="https://wa.me/5511912830541?text=Quero%20um%20diagnóstico%20gratuito"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleNavClick}
+              className="bg-transparent border border-[#E5001B] text-[#ffffff] px-6 py-3 rounded text-sm font-medium hover:bg-[#E5001B] hover:text-[#080808] transition-all inline-block"
+            >
+              Diagnóstico
+            </a>
+          </div>
+        )}
       </header>
 
       <main style={{ padding: "0", margin: "0" }}>
