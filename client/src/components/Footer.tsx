@@ -13,7 +13,8 @@ const navLinks = [
   { label: "Serviços", href: "#servicos" },
   { label: "Processo", href: "#processo" },
   { label: "Portfólio", href: "#portfolio" },
-  { label: "Contato", href: "#contato" },
+  { label: "Valores", href: "#pricing" },
+  { label: "Contato", href: "#footer" },
 ];
 
 export default function Footer() {
@@ -24,6 +25,7 @@ export default function Footer() {
 
   return (
     <footer
+      id="footer"
       style={{ backgroundColor: "#0F0F12", borderTop: "1px solid rgba(255,255,255,0.06)" }}
     >
       <div className="container py-12">

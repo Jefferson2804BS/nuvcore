@@ -106,7 +106,15 @@ export default function Home() {
             </li>
             <li>
               <a
-                href="#contact"
+                href="#pricing"
+                className="text-sm text-[#9A9490] hover:text-[#E5001B] transition-colors"
+              >
+                Valores
+              </a>
+            </li>
+            <li>
+              <a
+                href="#footer"
                 className="text-sm text-[#9A9490] hover:text-[#E5001B] transition-colors"
               >
                 Contato
@@ -168,7 +176,14 @@ export default function Home() {
               Portfólio
             </a>
             <a
-              href="#contact"
+              href="#pricing"
+              onClick={handleNavClick}
+              className="text-sm text-[#9A9490] hover:text-[#E5001B] transition-colors"
+            >
+              Valores
+            </a>
+            <a
+              href="#footer"
               onClick={handleNavClick}
               className="text-sm text-[#9A9490] hover:text-[#E5001B] transition-colors"
             >
