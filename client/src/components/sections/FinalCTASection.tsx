@@ -21,7 +21,7 @@ export default function FinalCTASection() {
                   '_blank'
                 )
               }
-              className="w-full bg-[#E5001B] text-[#080808] px-8 py-4 rounded font-bold hover:bg-[#F5001B] transition-all"
+              className="w-full bg-[#E5001B] text-[#ffffff] px-8 py-4 rounded font-bold hover:bg-[#F5001B] transition-all"
             >
               Quero diagnóstico gratuito
             </button>
