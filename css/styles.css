@@ -519,6 +519,22 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.portfolio-link {
+  display: inline-block;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.portfolio-link:hover {
+  border-bottom-color: var(--primary-color);
+  transform: translateX(4px);
 }
 
 /* ============================================

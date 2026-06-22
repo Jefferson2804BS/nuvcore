@@ -100,14 +100,20 @@ function renderProcessSteps() {
 function renderPortfolio() {
   const container = document.getElementById('portfolioGrid');
   
-  portfolioData.forEach(project => {
+  portfolioData.forEach((project, index) => {
     const item = document.createElement('div');
     item.className = 'portfolio-item';
+    
+    // Adicionar link ao site da Ester (primeiro projeto)
+    const link = index === 0 ? 'https://estersobrancelhas.netlify.app/' : '#';
+    const linkHTML = index === 0 ? `<a href="${link}" target="_blank" class="portfolio-link">Visitar site →</a>` : '';
+    
     item.innerHTML = `
       <div class="portfolio-image">${project.icon}</div>
       <div class="portfolio-content">
         <h3 class="portfolio-title">${project.title}</h3>
         <p class="portfolio-description">${project.description}</p>
+        ${linkHTML}
       </div>
     `;
     container.appendChild(item);
