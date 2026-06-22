@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1772228001158,
+      "tag": "0000_fixed_siren",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1772228073490,
+      "tag": "0001_red_patriot",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1772240681565,
+      "tag": "0002_handy_forgotten_one",
+      "breakpoints": true
+    }
+  ]
+}
